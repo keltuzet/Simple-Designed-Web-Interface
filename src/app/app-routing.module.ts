@@ -6,7 +6,7 @@ import { DessertComponent } from './pages/dessert/dessert.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: ROUTE.root, component: DessertComponent },
+  { path: ROUTE.root, redirectTo: `/${ROUTE.home}`, pathMatch: 'full' },
   { path: ROUTE.home, component: DessertComponent },
   { path: ROUTE.clients, component: ClientsComponent },
   { path: ROUTE.not_found, component: NotFoundComponent },
