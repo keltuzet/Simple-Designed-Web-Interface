@@ -1,0 +1,22 @@
+.viewer {
+  margin: 30px;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+
+  .header {
+    color: rgba(0, 0, 0, 0.40);
+    font-weight: 600;
+    font-size: 20px;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.03);
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  .content {
+    padding: 20px;
+  }
+}

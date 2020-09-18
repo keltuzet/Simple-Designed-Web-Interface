@@ -1,0 +1,46 @@
+<div class="paginator">
+  <div class="paginator-manage-buttons" *ngIf="showNavigationButtons">
+    <button (click)="handleStepToFirstPage()" [disabled]="Current === 1" class="sdwi-icon step-to-start">
+      <fa-icon [icon]="icons.stepToStart"></fa-icon>
+    </button>
+    <button (click)="handleStepToPreviousPage()" [disabled]="Current === 1" class="sdwi-icon step-to-back">
+      <fa-icon [icon]="icons.stepToBack"></fa-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="default; then defaultPaginatorTemplate else inputTypePaginatorTemplate"></ng-container>
+
+  <div class="paginator-manage-buttons" *ngIf="showNavigationButtons">
+    <button (click)="handleStepToNextPage()" [disabled]="Current === pageCount" class="sdwi-icon step-to-forward">
+      <fa-icon [icon]="icons.stepToForward"></fa-icon>
+    </button>
+    <button (click)="handleStepToLastPage()" [disabled]="Current === pageCount" class="sdwi-icon step-to-end">
+      <fa-icon [icon]="icons.stepToEnd"></fa-icon>
+    </button>
+  </div>
+
+  <div>
+    <!-- TODO: Kendo-select for choosing page size option -->
+  </div>
+
+  <div class="paginator-info" *ngIf="showPaginatorInfo">
+    {{ this.from }} - {{ this.to }} of {{ this.pageCount }} items
+  </div>
+</div>
+
+<ng-template #defaultPaginatorTemplate>
+  <div class="paginator-numeric-buttons">
+    <button (click)="handleStepToPage(this.from + i)" *appForTo="this.to - this.from; let i"
+      [ngClass]="{'current': Current === this.from + i}">{{ this.from + i }}</button>
+  </div>
+</ng-template>
+
+<ng-template #inputTypePaginatorTemplate>
+  <div class="paginator-input-model">
+    <span>Page</span><app-sdwi-numeric-input [max]="pageCount"></app-sdwi-numeric-input><span> of 13</span>
+  </div>
+</ng-template>
+
+<ng-template #previousButtonTemplate></ng-template>
+
+<ng-template #nextButtonsTemplate></ng-template>

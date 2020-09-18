@@ -1,0 +1,79 @@
+.sdwi-table {
+  border: 1px solid $default-border-color;
+  display: flex;
+  @include flex-pos(column);
+
+  .sdwi-table-header {
+  }
+  .sdwi-table-content {
+    overflow-x: auto;
+    font-size: 14px;
+    width: 100%;
+
+    table {
+      position: relative;
+      width: 100%;
+      min-width: 31.25rem;
+      color: $default-text-color;
+    }
+
+    thead tr {
+      background-color: $default-bg-color;
+    }
+
+    tbody tr:nth-child(2n) {
+      background-color: $default-bg-color;
+    }
+
+    td,
+    th {
+      padding: $cell-space;
+      border: 1px solid $default-border-color;
+
+      &:first-child {
+        border-left-width: 0;
+      }
+
+      button {
+        margin-left: 0.16em;
+        margin-right: 0.16em;
+      }
+    }
+
+    th {
+      border-width: 0 0 1px 1px;
+
+      .cell-filter-wrapper {
+        @include flex(flex);
+        flex: 1 1 auto;
+
+        input {
+          width: 100%;
+          min-width: 0;
+        }
+
+        .base-filter-operators {
+          margin-left: 4px;
+          white-space: nowrap;
+        }
+      }
+    }
+
+    td {
+      border-width: 0 0 0 1px;
+      
+      input {
+        width: 100%;
+      }
+
+      .cell-buttons {
+        display: flex;
+      }
+    }
+  }
+
+  .sticky-header {
+  }
+  .sdwi-table-footer {
+  }
+}

@@ -1,0 +1,63 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+body {
+  margin: 0;
+}
+
+input,
+button {
+  border: none;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  font-weight: 400;
+  text-align: start;
+}
+
+button {
+  padding: 0;
+  cursor: pointer;
+}
+
+input, button, textarea {
+  border: none;
+  outline: none;
+  min-width: 0;
+}
+
+html {
+  font-size: 16px;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  font-family: "Open Sans", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}

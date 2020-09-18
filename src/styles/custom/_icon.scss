@@ -1,0 +1,68 @@
+fa-icon {
+  color: white;
+
+  svg {
+    width: 10px;
+  }
+
+  .icon-wrapper & {
+    color: white;
+  }
+
+  &[color="primary"] {
+    color: $primary;
+  }
+  &[color="white"] {
+    color: $white;
+  }
+  &[color="light-gray"] {
+    color: $light-gray;
+  }
+  &[color="gray"] {
+    color: $gray;
+  }
+  &[color="warn"] {
+    color: $warn;
+  }
+}
+
+.icon-filled-wrapper {
+  @include flex-center;
+  width: 25px;
+  height: 25px;
+  font-size: 11px;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+
+  &[color="primary"] {
+    background-color: $primary;
+  }
+  &[color="light-gray"] {
+    background-color: $light-gray;
+  }
+  &[color="white"] {
+    background-color: $white;
+  }
+  &[color="gray"] {
+    background-color: $gray;
+  }
+  &[color="warn"] {
+    background-color: $warn;
+  }
+}
+
+.icon-wrapper {
+  @include flex-center;
+  width: 25px;
+  height: 25px;
+  font-size: 16px;
+  background-color: rgba(0, 0, 0, 0);
+
+  &:hover {
+    // font-size: 1.1em;
+  }
+}
+
+.circled {
+  border-radius: 50%;
+}

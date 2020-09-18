@@ -1,0 +1,51 @@
+.sdwi-button {
+  padding: $small-space;
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+
+  font-size: inherit;
+  line-height: 1.4285714286em;
+  white-space: nowrap;
+
+  border-width: 1px;
+  border-style: solid;
+
+  color: $default-text-color;
+  border-color: $default-border-color;
+  background-color: $default-bg-color;
+  background-image: $default-button-gradient;
+
+  &:hover {
+    border-color: $default-border-color-hover;
+    background-color: $default-bg-color-hover;
+    background-image: $default-button-gradient-hover;
+  }
+
+  &:active {
+    border-color: $default-border-color;
+    background-color: $default-bg-color;
+    background-image: none;
+    box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+
+  &.danger {
+    color: #fff;
+    border-color: $danger-border-color;
+    background-color: $danger-bg-color;
+    background-image: $danger-button-gradient;
+
+    &:hover {
+      border-color: $danger-border-color-hover;
+      background-color: $danger-bg-color-hover;
+      background-image: $danger-button-gradient-hover;
+    }
+
+    &:active {
+      border-color: $danger-border-color;
+      background-color: $danger-bg-color;
+      background-image: none;
+      box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.144);
+    }
+  }
+}

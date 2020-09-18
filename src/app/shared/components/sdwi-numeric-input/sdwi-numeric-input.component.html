@@ -1,0 +1,11 @@
+<div #wrap class="sdwi-numeric-input">
+  <input #inp [min]="min" [max]="max" [placeholder]="placholder" [formControl]="control" type="number">
+  <span class="arrow-wrap">
+    <span (click)="handleIncrease($event)" class="arrow-up">
+      <fa-icon [icon]="icons.arrowUp"></fa-icon>
+    </span>
+    <span (click)="handleDecrease($event)" class="arrow-down">
+      <fa-icon [icon]="icons.arrowDown"></fa-icon>
+    </span>
+  </span>
+</div>

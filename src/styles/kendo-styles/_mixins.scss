@@ -1,0 +1,25 @@
+@mixin default-form-wrapp {
+  border-radius: 2px;
+
+  font-size: inherit;
+  line-height: 1.4285714286em;
+
+  border-width: 1px;
+  border-style: solid;
+}
+
+@mixin default-input {
+  @include default-form-wrapp;
+  color: $default-text-color;
+  border-color: $default-border-color;
+  background-color: #fff;
+
+  &:hover {
+    border-color: $default-border-color-hover;
+  }
+
+  &:focus {
+    border-color: $default-border-color-hover;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03), 0 4px 5px 0 rgba(0, 0, 0, 0.04);
+  }
+}

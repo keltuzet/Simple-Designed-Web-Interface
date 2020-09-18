@@ -1,0 +1,20 @@
+.no-filter-icon {
+  position: relative;
+  .ng-fa-icon:first-child {
+  }
+
+  .ng-fa-icon:last-child {
+    // opacity: .6;
+    position: absolute;
+    transform: rotate(15deg);
+    left: -2px;
+    top: -4px;
+  }
+}
+
+.sdwi-icon {
+  font-size: 0.625rem;
+  background-color: inherit;
+  padding: 0.25rem;
+  color: $default-text-color;
+}

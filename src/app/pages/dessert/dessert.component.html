@@ -1,0 +1,83 @@
+<div class="container">
+  <app-viewer [title]="'table with sticky header'">
+    <div class="sdwi-table">
+      <div class="sdwi-table-header">
+      </div>
+
+      <div class="sdwi-table-content">
+        <table class="sticky-header">
+          <thead>
+            <tr>
+              <th *ngFor="let column of DessertTableColumns">{{ column }}</th>
+            </tr>
+            <tr>
+              <th *ngFor="let type of dessertTableFilters">
+                <app-table-filter-item [type]="type"></app-table-filter-item>
+              </th>
+              <th>
+                <button class="sdwi-button">Add new</button>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dessert of desserts; let i=index">
+              <ng-container [ngTemplateOutletContext]="{ index: i, dessert: dessert }"
+                [ngTemplateOutlet]="i === editRowIndex ? editModelRowTemplate : showModelRowTemplate"></ng-container>
+            </tr>
+            <ngx-spinner name="desserts-table"></ngx-spinner>
+            <app-empty-table-state *ngIf="!desserts?.length" [colspan]="6"></app-empty-table-state>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sdwi-table-footer">
+        <app-paginator [default]="false" [length]="desserts?.length" [pageCount]="13" [(Current)]="currentPage" [showPaginatorInfo]="true" [showPageSizeOptions]="true"></app-paginator>
+      </div>
+    </div>
+  </app-viewer>
+</div>
+
+<ng-template #showModelRowTemplate let-dessert="dessert" let-index="index">
+  <td>{{ dessert.name }}</td>
+  <td>
+    {{ dessert.calories }}
+  </td>
+  <td>{{ dessert.fat }}
+  </td>
+  <td>
+    {{ dessert.carbs }}
+  </td>
+  <td>
+    {{ dessert.protein }}
+  </td>
+  <td>
+    <div class="cell-buttons">
+      <button (click)="handleShowEditModel(index, dessert)" class="sdwi-button danger">Edit</button>
+      <button (click)="handleDeleteDessert(dessert.id)" class="sdwi-button">Remove</button>
+    </div>
+  </td>
+</ng-template>
+
+<ng-template #editModelRowTemplate let-dessert="dessert" let-index="index">
+  <td>
+    <input [formControl]="rowForm.controls.name" class="sdwi-input">
+  </td>
+  <td>
+    <app-sdwi-numeric-input [control]="rowForm.controls.calories"></app-sdwi-numeric-input>
+  </td>
+  <td>
+    <app-sdwi-numeric-input [control]="rowForm.controls.fat"></app-sdwi-numeric-input>
+  </td>
+  <td>
+    <app-sdwi-numeric-input [control]="rowForm.controls.carbs"></app-sdwi-numeric-input>
+  </td>
+  <td>
+    <app-sdwi-numeric-input [control]="rowForm.controls.protein"></app-sdwi-numeric-input>
+  </td>
+  <td>
+    <div class="cell-buttons">
+      <button (click)="handleUpdateRow(dessert.id)" class="sdwi-button">Update</button>
+      <button (click)="handleCancelEdit()" class="sdwi-button">Cancel</button>
+    </div>
+  </td>
+</ng-template>

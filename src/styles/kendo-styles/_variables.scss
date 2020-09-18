@@ -1,0 +1,35 @@
+/* colors */
+$default-border-color: rgba(0, 0, 0, 0.08);
+$default-text-color: #656565;
+$default-bg-color: #f6f6f6;
+
+$danger-border-color: rgba(128, 7, 7, 0.192);
+$danger-bg-color: #ff6358;
+
+/* colors on hover */
+$default-border-color-hover: rgba(0, 0, 0, 0.15);
+$default-bg-color-hover: #ededed;
+
+/* colors on active */
+$default-text-color-active: #252525;
+
+$danger-border-color-hover: rgba(128, 7, 7, 0.225);
+$danger-bg-color-hover: #f85b50;
+
+/* spaces */
+$cell-space: 0.5rem 0.75rem;
+$small-space: 0.25rem 0.5rem;
+
+/* gradients */
+$default-button-gradient: linear-gradient(#f6f6f6, #f1f1f1);
+$danger-button-gradient: linear-gradient(
+  rgba(255, 138, 88, 0),
+  rgba(255, 138, 88, 0.2)
+);
+
+/* gradients on hover*/
+$default-button-gradient-hover: linear-gradient(#ededed, #e8e8e8);
+$danger-button-gradient-hover: linear-gradient(
+  rgba(255, 146, 88, 0),
+  rgba(255, 146, 88, 0.2)
+);

@@ -1,0 +1,27 @@
+<h1>{{ this.Source? 'Edit dessert' : 'Add dessert' }} </h1>
+<form [formGroup]="formGroup">
+  <div class="field-wrapper">
+    <span class="label">Name</span>
+    <input type="text" formControlName="name" required>
+  </div>
+
+  <div class="field-wrapper">
+    <span class="label">Calories</span>
+    <input type="number" formControlName="calories" required>
+  </div>
+
+  <div class="field-wrapper">
+    <span class="label">Fat</span>
+    <input type="number" formControlName="fat" required>
+  </div>
+
+  <div class="field-wrapper">
+    <span class="label">Carbs</span>
+    <input type="number" formControlName="carbs" required>
+  </div>
+
+  <div class="field-wrapper">
+    <span class="label">Protein</span>
+    <input type="number" formControlName="protein" required>
+  </div>
+</form>
