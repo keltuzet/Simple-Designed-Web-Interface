@@ -3,25 +3,29 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { DessertModule } from '@pages/dessert/dessert.module';
+import { ClientsModule } from '@pages/clients/clients.module';
+import { NotFoundModule } from '@pages/not-found/not-found.module';
+import { InfoClientModule } from '@pages/info-client/info-client.module';
+import { ClientNotFoundModule } from '@pages/client-not-found/client-not-found.module';
+import { HeaderModule } from '@shared/components';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { DessertModule } from './pages/dessert/dessert.module';
-import { ClientsModule } from '@pages/clients/clients.module';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { HeaderModule } from '@shared/components';
-import { InfoClientModule } from './info-client/info-client.module';
+import { SharedModule } from '@shared/modules';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    DessertModule,
     HeaderModule,
+    DessertModule,
+    NotFoundModule,
     InfoClientModule,
-    ClientsModule
+    ClientsModule,
+    ClientNotFoundModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

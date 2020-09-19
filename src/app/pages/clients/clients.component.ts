@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientTableColumns } from '@shared/const';
 import { Observable, Subscription } from 'rxjs';
-import {} from 'lodash'
+import {} from 'lodash';
 
 import { ClientBaseModel } from './model/client-base.model';
 import { Router } from '@angular/router';
@@ -18,7 +18,10 @@ export class ClientsComponent implements OnInit {
   clients: ClientBaseModel[];
   clientsColumn = ClientTableColumns;
 
-  constructor(private clientsDatabaseService: ClientsDatabaseService, private router: Router) {}
+  constructor(
+    private clientsDatabaseService: ClientsDatabaseService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getClients();
@@ -33,7 +36,7 @@ export class ClientsComponent implements OnInit {
     );
   }
 
-  handleNavigateToClient(id: number) {
-    this.router.navigate([`client/:${id}`])
+  handleNavigateToClient(id: number): void {
+    this.router.navigate(['/client', `${id}`]);
   }
 }

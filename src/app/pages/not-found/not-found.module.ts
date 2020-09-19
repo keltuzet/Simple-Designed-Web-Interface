@@ -1,12 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NotFoundComponent } from './not-found.component';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
+  declarations: [NotFoundComponent],
+  exports: [NotFoundComponent],
+  imports: [FontAwesomeModule],
 })
-export class NotFoundModule { }
+export class NotFoundModule {}
