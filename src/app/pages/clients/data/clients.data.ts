@@ -3,6 +3,7 @@ import { ClientBaseModel } from '../model/client-base.model';
 
 export const ClientsData: Partial<ClientBaseModel>[] = [
   {
+    id: 78523852,
     lastName: 'Sam',
     firstName: 'Porter',
     middleName: '',
@@ -14,6 +15,7 @@ export const ClientsData: Partial<ClientBaseModel>[] = [
     status: ClientStatusEnum.Active,
   },
   {
+    id: 6346023,
     lastName: 'Elina',
     firstName: 'Pink',
     middleName: 'Hoper',
@@ -25,6 +27,7 @@ export const ClientsData: Partial<ClientBaseModel>[] = [
     status: ClientStatusEnum.Blocked,
   },
   {
+    id: 89278478,
     lastName: 'Phill',
     firstName: 'Joses',
     middleName: '',
@@ -36,6 +39,7 @@ export const ClientsData: Partial<ClientBaseModel>[] = [
     status: ClientStatusEnum.Deleted,
   },
   {
+    id: 97794841,
     lastName: 'Jhonatan',
     firstName: 'Joster',
     middleName: '',

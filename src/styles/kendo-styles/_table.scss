@@ -21,6 +21,10 @@
       background-color: $default-bg-color;
     }
 
+    tbody {
+      position: relative;
+    }
+
     tbody tr:nth-child(2n) {
       background-color: $default-bg-color;
     }
@@ -61,7 +65,7 @@
 
     td {
       border-width: 0 0 0 1px;
-      
+
       input {
         width: 100%;
       }
@@ -76,4 +80,8 @@
   }
   .sdwi-table-footer {
   }
+}
+
+app-spinner-wrapper .overlay > div {
+  top: 58% !important;
 }

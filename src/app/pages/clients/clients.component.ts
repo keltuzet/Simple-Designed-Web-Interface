@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientTableColumns } from '@shared/const';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import {} from 'lodash'
 import { ClientsService } from './clients.service';
 import { ClientBaseModel } from './model/client-base.model';
 
@@ -11,18 +12,20 @@ import { ClientBaseModel } from './model/client-base.model';
 })
 export class ClientsComponent implements OnInit {
   $subscription: Subscription[] = [];
+  clients$: Observable<ClientBaseModel[]>;
   clients: ClientBaseModel[];
   clientsColumn = ClientTableColumns;
 
   constructor(private clientsService: ClientsService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getClients();
   }
 
-  getClients() {
+  getClients(): void {
+    this.clients$ = this.clientsService.getClients();
     this.$subscription.push(
-      this.clientsService.getClients().subscribe((clients) => {
+      this.clients$.subscribe((clients) => {
         this.clients = clients;
       })
     );

@@ -1,19 +1,26 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
+
+import { SpinnerService } from '@shared/services';
+import { SPINNER_NAMES } from '@shared/const';
 import { ClientsData } from './data';
 import { ClientBaseModel } from './model/client-base.model';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ClientsService {
-  constructor() {}
+@Injectable()
+export class ClientsService extends SpinnerService {
+
+  constructor(injector: Injector) {
+    super(injector);
+  }
 
   getClients(): Observable<ClientBaseModel[]> {
-    return of(ClientsData as ClientBaseModel[]).pipe(
-      delay(700),
-      map((clients) => clients.map((client) => new ClientBaseModel(client)))
+    return this.skipSpinner(
+      of(ClientsData as ClientBaseModel[]).pipe(
+        delay(2000),
+        map((clients) => clients.map((client) => new ClientBaseModel(client)))
+      ),
+      SPINNER_NAMES.CLIENTS_BASE_TABLE
     );
   }
 }

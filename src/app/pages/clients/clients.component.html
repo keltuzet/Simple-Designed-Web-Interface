@@ -19,7 +19,7 @@
             </tr> -->
           </thead>
           <tbody>
-            <tr *ngFor="let client of clients; let i = index">
+            <tr [routerLink]="" *ngFor="let client of clients; let i = index">
               <td>{{ client.getFullName }}</td>
               <td>{{ client.DOB }}</td>
               <td>{{ client.email }}</td>
@@ -28,6 +28,8 @@
               <td>{{ client.account }}</td>
               <td>{{ client.status }}</td>
             </tr>
+            <app-spinner-wrapper *ngIf="!(clients$ | async)" name="clients-base-table"></app-spinner-wrapper>
+            <app-empty-table-state *ngIf="clients ? clients.length === 0 : false"></app-empty-table-state>
           </tbody>
         </table>
       </div>

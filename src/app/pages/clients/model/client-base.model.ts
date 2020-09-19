@@ -1,6 +1,7 @@
 import { ClientStatusEnum } from '../enum';
 
 export class ClientBaseModel {
+  id: number;
   firstName: string;
   lastName: string;
   middleName?: string;

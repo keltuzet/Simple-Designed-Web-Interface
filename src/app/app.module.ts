@@ -6,13 +6,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { DessertModule } from './pages/dessert/dessert.module';
-import { ClientsComponent } from './pages/clients/clients.component';
+import { ClientsModule } from '@pages/clients/clients.module';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HeaderModule } from '@shared/components';
 import { InfoClientModule } from './info-client/info-client.module';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, ClientsComponent],
+  declarations: [AppComponent, NotFoundComponent],
   imports: [
     BrowserAnimationsModule,
     BrowserModule,
@@ -21,6 +21,7 @@ import { InfoClientModule } from './info-client/info-client.module';
     DessertModule,
     HeaderModule,
     InfoClientModule,
+    ClientsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
