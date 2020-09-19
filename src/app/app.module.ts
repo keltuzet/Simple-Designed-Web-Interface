@@ -9,6 +9,7 @@ import { DessertModule } from './pages/dessert/dessert.module';
 import { ClientsComponent } from './pages/clients/clients.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { HeaderModule } from '@shared/components';
+import { InfoClientModule } from './info-client/info-client.module';
 
 @NgModule({
   declarations: [AppComponent, NotFoundComponent, ClientsComponent],
@@ -19,6 +20,7 @@ import { HeaderModule } from '@shared/components';
     FontAwesomeModule,
     DessertModule,
     HeaderModule,
+    InfoClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

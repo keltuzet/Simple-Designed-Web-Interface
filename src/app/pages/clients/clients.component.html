@@ -1,1 +1,36 @@
-<p>clients works!</p>
+<div class="container">
+  <app-viewer [title]="'Clients data'">
+    <div class="sdwi-table">
+      <div class="sdwi-table-header"></div>
+
+      <div class="sdwi-table-content">
+        <table class="sticky-header">
+          <thead>
+            <tr>
+              <th *ngFor="let column of clientsColumn">{{ column }}</th>
+            </tr>
+            <!-- <tr>
+              <th *ngFor="let type of dessertTableFilters">
+                <app-table-filter-item [type]="type"></app-table-filter-item>
+              </th>
+              <th>
+                <button class="sdwi-button">Add new</button>
+              </th>
+            </tr> -->
+          </thead>
+          <tbody>
+            <tr *ngFor="let client of clients; let i = index">
+              <td>{{ client.getFullName }}</td>
+              <td>{{ client.DOB }}</td>
+              <td>{{ client.email }}</td>
+              <td>{{ client.lastSeenDate }}</td>
+              <td>{{ client.lastTransaction }}</td>
+              <td>{{ client.account }}</td>
+              <td>{{ client.status }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </app-viewer>
+</div>
