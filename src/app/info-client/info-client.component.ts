@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ClientsDatabaseService } from '@shared/services';
 
 @Component({
   selector: 'app-info-client',
@@ -9,9 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 export class InfoClientComponent implements OnInit {
   id: number;
 
-  constructor(private activateRoute: ActivatedRoute) {
+  constructor(
+    private clientsDatabaseService: ClientsDatabaseService,
+    private activateRoute: ActivatedRoute
+  ) {
     this.id = activateRoute.snapshot.params['id'];
-    console.log(this.id);
+    this.clientsDatabaseService.getClientById(this.id).subscribe((client) => {
+      console.log(client);
+    });
+    console.log(activateRoute);
   }
 
   ngOnInit(): void {}

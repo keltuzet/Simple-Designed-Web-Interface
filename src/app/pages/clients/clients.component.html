@@ -4,7 +4,7 @@
       <div class="sdwi-table-header"></div>
 
       <div class="sdwi-table-content">
-        <table class="sticky-header">
+        <table class="sticky-header selectable">
           <thead>
             <tr>
               <th *ngFor="let column of clientsColumn">{{ column }}</th>
@@ -19,7 +19,7 @@
             </tr> -->
           </thead>
           <tbody>
-            <tr [routerLink]="" *ngFor="let client of clients; let i = index">
+            <tr (click)="handleNavigateToClient(client.id)" *ngFor="let client of clients; let i = index">
               <td>{{ client.getFullName }}</td>
               <td>{{ client.DOB }}</td>
               <td>{{ client.email }}</td>

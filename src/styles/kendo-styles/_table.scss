@@ -15,6 +15,14 @@
       width: 100%;
       min-width: 31.25rem;
       color: $default-text-color;
+
+      &.selectable {
+        tbody {
+          tr:hover {
+            background-color: #e3e3e3;
+          }
+        }
+      }
     }
 
     thead tr {

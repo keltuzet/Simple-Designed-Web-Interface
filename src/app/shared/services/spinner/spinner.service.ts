@@ -11,6 +11,10 @@ export class SpinnerService {
     this.spinner = this.injector.get(NgxSpinnerService);
   }
 
+  protected wrappSpinner<T>(stream: Observable<T>, spinnerName: string) {
+    return spinnerName ? this.skipSpinner(stream, spinnerName) : stream;
+  }
+
   protected skipSpinner<T>(
     stream: Observable<T>,
     spinnerName: string,
@@ -23,7 +27,7 @@ export class SpinnerService {
         type: 'ball-clip-rotate-multiple',
         color: '#656565',
         size: 'default',
-        bdColor: 'rgba(0,0,0,0.04)'
+        bdColor: 'rgba(0,0,0,0.04)',
       },
       options || {}
     );

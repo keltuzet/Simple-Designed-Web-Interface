@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ClientTableColumns } from '@shared/const';
 import { Observable, Subscription } from 'rxjs';
 import {} from 'lodash'
-import { ClientsService } from './clients.service';
+
 import { ClientBaseModel } from './model/client-base.model';
+import { Router } from '@angular/router';
+import { ClientsDatabaseService } from '@shared/services';
 
 @Component({
   selector: 'app-clients',
@@ -16,18 +18,22 @@ export class ClientsComponent implements OnInit {
   clients: ClientBaseModel[];
   clientsColumn = ClientTableColumns;
 
-  constructor(private clientsService: ClientsService) {}
+  constructor(private clientsDatabaseService: ClientsDatabaseService, private router: Router) {}
 
   ngOnInit(): void {
     this.getClients();
   }
 
   getClients(): void {
-    this.clients$ = this.clientsService.getClients();
+    this.clients$ = this.clientsDatabaseService.getClients();
     this.$subscription.push(
       this.clients$.subscribe((clients) => {
         this.clients = clients;
       })
     );
+  }
+
+  handleNavigateToClient(id: number) {
+    this.router.navigate([`client/:${id}`])
   }
 }

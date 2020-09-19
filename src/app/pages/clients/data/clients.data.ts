@@ -1,7 +1,7 @@
 import { ClientStatusEnum } from '../enum';
-import { ClientBaseModel } from '../model/client-base.model';
+import { ClientBaseResponseModel } from '../model/client-base.model';
 
-export const ClientsData: Partial<ClientBaseModel>[] = [
+export const ClientsData: ClientBaseResponseModel[] = [
   {
     id: 78523852,
     lastName: 'Sam',
