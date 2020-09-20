@@ -18,4 +18,8 @@ export class ContactsComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getError() {
+    // return this.formGroup.errors;
+    return 'Validity error errorerrorerrorerrorerrorerrorerrorerrorerror';
+  }
 }

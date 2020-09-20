@@ -3,7 +3,7 @@ app-sdwi-form-field {
   @include flex-pos(column, wrap);
   margin: 1rem 0.5rem 0 0.5rem;
   position: relative;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0 1rem 0;
 
   input {
     @include default-input;
@@ -16,5 +16,19 @@ app-sdwi-form-field {
     left: 0;
     display: flex;
     flex-flow: row nowrap;
+
+    line-height: 1rem;
+  }
+
+  app-sdwi-error {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row nowrap;
+
+    font-size: 0.8em;
+    line-height: 0.8rem;
+    color: #f31700;
   }
 }
