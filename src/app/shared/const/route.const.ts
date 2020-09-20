@@ -4,5 +4,6 @@ export const ROUTE = Object.freeze({
   client_id: 'client/:id',
   client_not_found: 'client-not-found',
   home: 'desserts',
+  contacts: 'contacts',
   not_found: '**',
 });

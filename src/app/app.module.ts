@@ -8,10 +8,10 @@ import { ClientsModule } from '@pages/clients/clients.module';
 import { NotFoundModule } from '@pages/not-found/not-found.module';
 import { InfoClientModule } from '@pages/info-client/info-client.module';
 import { ClientNotFoundModule } from '@pages/client-not-found/client-not-found.module';
+import { ContactsModule } from '@pages/contacts/contacts.module';
 import { HeaderModule } from '@shared/components';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from '@shared/modules';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +26,7 @@ import { SharedModule } from '@shared/modules';
     InfoClientModule,
     ClientsModule,
     ClientNotFoundModule,
+    ContactsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

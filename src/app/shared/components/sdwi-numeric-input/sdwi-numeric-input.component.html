@@ -1,10 +1,11 @@
 <div #wrap class="sdwi-numeric-input">
-  <input #inp [min]="min" [max]="max" [placeholder]="placholder" [formControl]="control" type="number">
+  <input [ngModel]="value" (ngModelChange)="updateValue($event)" [disabled]="disabled" type="number">
+  <!-- [min]="min" [max]="max" [placeholder]="placholder" -->
   <span class="arrow-wrap">
-    <span (click)="handleIncrease($event)" class="arrow-up">
+    <span (click)="updateValue(value + 1)" class="arrow-up">
       <fa-icon [icon]="icons.arrowUp"></fa-icon>
     </span>
-    <span (click)="handleDecrease($event)" class="arrow-down">
+    <span (click)="updateValue(value - 1)" class="arrow-down">
       <fa-icon [icon]="icons.arrowDown"></fa-icon>
     </span>
   </span>

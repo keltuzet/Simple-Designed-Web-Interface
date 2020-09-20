@@ -1,10 +1,14 @@
-// components
+// tools, variables
+@import "./variables";
+@import "./mixins";
+
+// custom components
 @import "./components/header";
 @import "./components/not-found";
 @import "./components/paginator";
+@import "./components/form-field";
 
-@import "./variables";
-@import "./mixins";
+// native components
 @import "./table";
 @import "./button";
 @import "./input";

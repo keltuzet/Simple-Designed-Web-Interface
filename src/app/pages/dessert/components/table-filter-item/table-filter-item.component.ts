@@ -16,9 +16,10 @@ export class TableFilterItemComponent {
   icons = { clear: faWindowClose, filter: faFilter };
 
   constructor() {
-    this.formControl.valueChanges.subscribe((value) =>
+    this.formControl.valueChanges.subscribe((value) => {
+      console.log(value);
       this.valueChangeEvent.emit(value)
-    );
+    });
   }
 
   handleChangeValue(value): void {

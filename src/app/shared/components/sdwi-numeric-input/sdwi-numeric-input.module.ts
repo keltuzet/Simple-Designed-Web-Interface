@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { SdwiNumericInputComponent } from './sdwi-numeric-input.component';
-import { SharedModule } from '../../modules';
+import { FormsModule } from '@angular/forms';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [SdwiNumericInputComponent],
-  imports: [SharedModule],
+  imports: [FontAwesomeModule, FormsModule],
   exports: [SdwiNumericInputComponent],
 })
 export class SdwiNumericInputModule {}

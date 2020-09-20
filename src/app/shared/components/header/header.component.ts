@@ -25,7 +25,7 @@ export class HeaderComponent implements OnInit {
       },
       {
         icon: Icons.contacts,
-        path: ROUTE.not_found,
+        path: ROUTE.contacts,
         text: 'Contacts'
       },
     ];

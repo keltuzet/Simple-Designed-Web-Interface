@@ -1,0 +1,20 @@
+app-sdwi-form-field {
+  display: inline-flex;
+  @include flex-pos(column, wrap);
+  margin: 1rem 0.5rem 0 0.5rem;
+  position: relative;
+  padding-top: 1.5rem;
+
+  input {
+    @include default-input;
+    padding: $small-space;
+  }
+
+  .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-flow: row nowrap;
+  }
+}
