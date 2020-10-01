@@ -7,6 +7,7 @@ import {
   SdwiFormFieldModule,
   SdwiLabelModule,
 } from '@shared/components';
+import { SdwiInputModule } from '@shared/directives';
 import { ContactsComponent } from './contacts.component';
 import { ContactsService } from './contacts.service';
 
@@ -19,6 +20,7 @@ import { ContactsService } from './contacts.service';
     SdwiFormFieldModule,
     SdwiLabelModule,
     SdwiErrorModule,
+    SdwiInputModule,
   ],
   exports: [ContactsComponent],
   providers: [ContactsService],

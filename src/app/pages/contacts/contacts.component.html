@@ -2,7 +2,7 @@
 <form [formGroup]="formGroup">
   <app-sdwi-form-field>
     <app-sdwi-label>Label</app-sdwi-label>
-    <input formControlName="name">
+    <input *appSdwiInput [formControl]="formGroup.controls.name">
     <app-sdwi-error>{{getError()}}</app-sdwi-error>
   </app-sdwi-form-field>
 
