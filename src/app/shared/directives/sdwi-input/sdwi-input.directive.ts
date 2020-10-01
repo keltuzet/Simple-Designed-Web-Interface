@@ -1,15 +1,17 @@
 import { Directive, ElementRef, TemplateRef, ViewContainerRef } from '@angular/core';
+import { FormControl, NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[appSdwiInput]',
+  selector: '[ngModel], [formControl], [formControlName]',
 })
 export class SdwiInputDirective {
   constructor(
     private elementRef: ElementRef,
-    private templateRef: TemplateRef<any>,
-    private viewContainer: ViewContainerRef
+    private viewContainer: ViewContainerRef,
+    private control : NgControl
   ) {
-    console.log(this.templateRef);
+    console.log(this.elementRef);
     console.log(this.viewContainer);
+    console.log(this.control);
   }
 }

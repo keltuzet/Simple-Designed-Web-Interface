@@ -12,8 +12,8 @@ export class SdwiFormFieldComponent implements OnInit, AfterContentInit, AfterVi
   @ContentChild(SdwiErrorComponent, { static: false })
   private errorComponent: SdwiErrorComponent;
 
-  @ContentChild(FormControl, { static: false })
-  private control: FormControl;
+  @ContentChild(SdwiInputDirective, { static: false })
+  private control: SdwiInputDirective;
 
   constructor() {}
 
