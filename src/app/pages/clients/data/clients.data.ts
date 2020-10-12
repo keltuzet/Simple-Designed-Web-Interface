@@ -3,7 +3,7 @@ import { ClientBaseResponseModel } from '../model/client-base.model';
 
 export const ClientsData: ClientBaseResponseModel[] = [
   {
-    id: 78523852,
+    id: 0,
     lastName: 'Sam',
     firstName: 'Porter',
     middleName: '',
@@ -15,7 +15,7 @@ export const ClientsData: ClientBaseResponseModel[] = [
     status: ClientStatusEnum.Active,
   },
   {
-    id: 6346023,
+    id: 1,
     lastName: 'Elina',
     firstName: 'Pink',
     middleName: 'Hoper',
@@ -27,7 +27,7 @@ export const ClientsData: ClientBaseResponseModel[] = [
     status: ClientStatusEnum.Blocked,
   },
   {
-    id: 89278478,
+    id: 2,
     lastName: 'Phill',
     firstName: 'Joses',
     middleName: '',
@@ -39,7 +39,7 @@ export const ClientsData: ClientBaseResponseModel[] = [
     status: ClientStatusEnum.Deleted,
   },
   {
-    id: 97794841,
+    id: 3,
     lastName: 'Jhonatan',
     firstName: 'Joster',
     middleName: '',

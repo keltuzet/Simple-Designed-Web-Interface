@@ -1,5 +1,9 @@
-import { AfterContentInit, AfterViewInit, Component, ContentChild, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  AfterContentInit,
+  Component,
+  ContentChild,
+  OnInit,
+} from '@angular/core';
 import { SdwiInputDirective } from '@shared/directives';
 import { SdwiErrorComponent } from '../sdwi-error';
 
@@ -8,24 +12,28 @@ import { SdwiErrorComponent } from '../sdwi-error';
   templateUrl: './sdwi-form-field.component.html',
   styleUrls: ['./sdwi-form-field.component.scss'],
 })
-export class SdwiFormFieldComponent implements OnInit, AfterContentInit, AfterViewInit {
+export class SdwiFormFieldComponent implements OnInit, AfterContentInit {
   @ContentChild(SdwiErrorComponent, { static: false })
   private errorComponent: SdwiErrorComponent;
 
   @ContentChild(SdwiInputDirective, { static: false })
-  private control: SdwiInputDirective;
+  private swdiInput: SdwiInputDirective;
 
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  ngAfterContentInit() {
-
-  }
-
-  ngAfterViewInit() {
-    console.log(this.errorComponent);
-    console.log(this.control);
+  ngAfterContentInit(): void {
+    if (!this.swdiInput) {
+      throw new Error(`The SdwiInputDirective isn't provided!`);
+    }
+    if (this.errorComponent) {
+      this.swdiInput.control.statusChanges.subscribe(() => {
+        this.errorComponent.errorText = this.swdiInput.control.control[
+          // tslint:disable-next-line: no-string-literal
+          'errorMessage'
+        ];
+      });
+    }
   }
 }

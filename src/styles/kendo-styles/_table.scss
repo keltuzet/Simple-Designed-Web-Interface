@@ -1,11 +1,9 @@
-.sdwi-table {
+.table-wrapper {
   border: 1px solid $default-border-color;
   display: flex;
   @include flex-pos(column);
 
-  .sdwi-table-header {
-  }
-  .sdwi-table-content {
+  .table-content {
     overflow-x: auto;
     font-size: 14px;
     width: 100%;
@@ -86,10 +84,8 @@
 
   .sticky-header {
   }
-  .sdwi-table-footer {
+  .table-footer {
   }
 }
 
-app-spinner-wrapper .overlay > div {
-  top: 58% !important;
-}
+

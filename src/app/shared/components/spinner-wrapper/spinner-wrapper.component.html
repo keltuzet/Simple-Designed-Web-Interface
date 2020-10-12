@@ -1,3 +1,10 @@
 <td>
-  <ngx-spinner [name]="name"></ngx-spinner>
+  <ngx-spinner [name]="name">
+    <ng-container *ngIf="title; else elseTemplate">
+      {{ title }}
+    </ng-container>
+    <ng-template #elseTemplate>
+      <ng-content></ng-content>
+    </ng-template>
+  </ngx-spinner>
 </td>

@@ -1,13 +1,16 @@
 <div class="container">
   <app-viewer [title]="'Clients data'">
-    <div class="sdwi-table">
-      <div class="sdwi-table-header"></div>
+    <div class="table-wrapper">
+      <div class="table-header"></div>
 
-      <div class="sdwi-table-content">
+      <div class="table-content">
         <table class="sticky-header selectable">
           <thead>
             <tr>
               <th *ngFor="let column of clientsColumn">{{ column }}</th>
+              <th>
+                <button [disabled]="isCreatingClient" (click)="handleAddClient()" class="sdwi-button">Add new</button>
+              </th>
             </tr>
             <!-- <tr>
               <th *ngFor="let type of dessertTableFilters">
@@ -19,20 +22,101 @@
             </tr> -->
           </thead>
           <tbody>
-            <tr (click)="handleNavigateToClient(client.id)" *ngFor="let client of clients; let i = index">
-              <td>{{ client.getFullName }}</td>
-              <td>{{ client.DOB }}</td>
-              <td>{{ client.email }}</td>
-              <td>{{ client.lastSeenDate }}</td>
-              <td>{{ client.lastTransaction }}</td>
-              <td>{{ client.account }}</td>
-              <td>{{ client.status }}</td>
+            <ng-container #clientCreateCnt></ng-container>
+            <tr *ngFor="let client of clients; let i=index">
+              <ng-container [ngTemplateOutletContext]="{ index: i, client: client }"
+                [ngTemplateOutlet]="i === editRowIndex ? rowEditTpl : rowDisplayTpl"></ng-container>
             </tr>
-            <app-spinner-wrapper *ngIf="!(clients$ | async)" name="clients-base-table"></app-spinner-wrapper>
-            <app-empty-table-state *ngIf="clients ? clients.length === 0 : false"></app-empty-table-state>
+            <app-spinner-wrapper *ngIf="!clients" name="clients-base-table" title="Loading, please wait">
+            </app-spinner-wrapper>
+            <app-empty-table-state *ngIf="clients ? !clients.length : false"></app-empty-table-state>
           </tbody>
         </table>
       </div>
     </div>
   </app-viewer>
 </div>
+
+<ng-template #rowDisplayTpl let-client="client" let-index="index">
+  <td>{{ client.fullName }}</td>
+  <td>{{ client.DOB }}</td>
+  <td>{{ client.email }}</td>
+  <td>{{ client.lastSeenDate }}</td>
+  <td>{{ client.lastTransaction }}</td>
+  <td>{{ client.account }}</td>
+  <td>{{ client.status }}</td>
+  <td>
+    <div class="cell-buttons">
+      <button (click)="handleShowEditModel(index, client)" class="sdwi-button danger">Edit</button>
+      <button (click)="handleDeleteDessert(client.id)" class="sdwi-button">Remove</button>
+    </div>
+  </td>
+</ng-template>
+
+<ng-template #rowEditTpl let-client="client">
+  <td>
+    <input [formControl]="clientEditForm.controls.fullName" class="sdwi-input">
+  </td>
+  <td>
+    <input [formControl]="clientEditForm.controls.DOB" class="sdwi-input">
+  </td>
+  <td>
+    <input [value]="client.email" [formControl]="clientEditForm.controls.email" class="sdwi-input">
+  </td>
+  <td>
+    <input [value]="client.lastSeenDate" [formControl]="clientEditForm.controls.lastSeenDate" class="sdwi-input">
+  </td>
+  <td>
+    <input [value]="client.lastTransaction" [formControl]="clientEditForm.controls.lastTransaction" class="sdwi-input">
+  </td>
+  <td>
+    <input [value]="client.account" [formControl]="clientEditForm.controls.account" class="sdwi-input">
+  </td>
+  <td>
+    <input [value]="client.status" [formControl]="clientEditForm.controls.status" class="sdwi-input">
+  </td>
+  <td>
+    <div class="cell-buttons">
+      <button (click)="handleUpdateRow(client)" class="sdwi-button">Update</button>
+      <button (click)="handleCancelEdit()" class="sdwi-button">Cancel</button>
+    </div>
+  </td>
+</ng-template>
+
+<ng-template #rowCreateTpl>
+  <tr>
+    <form [formGroup]="clientCreateForm">
+    <td>
+      <app-sdwi-form-field>
+        <app-sdwi-label>Names</app-sdwi-label>
+        <!-- <input [formControl]="clientCreateForm.controls.fullName" class="sdwi-input" type="text"> -->
+        <app-sdwi-error></app-sdwi-error>
+      </app-sdwi-form-field>
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.dob" class="sdwi-input"> -->
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.email" class="sdwi-input"> -->
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.lastSeenDate" class="sdwi-input"> -->
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.lastTransaction" class="sdwi-input"> -->
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.account" class="sdwi-input"> -->
+    </td>
+    <td>
+      <!-- <input [formControl]="clientCreateForm.controls.status" class="sdwi-input"> -->
+    </td>
+    <td>
+      <div class="cell-buttons">
+        <button (click)="handleCreate()" class="sdwi-button">Update</button>
+        <button (click)="handleCancelCreate()" class="sdwi-button">Cancel</button>
+      </div>
+    </td>
+  </form>
+  </tr>
+</ng-template>

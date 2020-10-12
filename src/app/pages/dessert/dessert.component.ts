@@ -24,6 +24,7 @@ export class DessertComponent implements OnInit {
     CustomInputTypeEnum.Number,
   ];
   AccountData: IAccountView[] = AccountData;
+  viewerTitle = 'table with sticky header';
 
   filterForm: FormGroup = new FormGroup({
     name: new FormControl(),

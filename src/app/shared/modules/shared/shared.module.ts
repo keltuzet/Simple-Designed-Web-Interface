@@ -8,13 +8,11 @@ import { NgxSpinnerModule } from 'ngx-spinner';
   imports: [
     CommonModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
     NgxSpinnerModule,
   ],
   exports: [
     CommonModule,
     FontAwesomeModule,
-    ReactiveFormsModule,
     NgxSpinnerModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

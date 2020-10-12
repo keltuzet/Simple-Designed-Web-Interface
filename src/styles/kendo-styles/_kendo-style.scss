@@ -8,8 +8,12 @@
 @import "./components/paginator";
 @import "./components/form-field";
 
+// foreign components
+@import "./foreign/loader";
+
 // native components
 @import "./table";
 @import "./button";
 @import "./input";
+@import "./form";
 @import "./icon";

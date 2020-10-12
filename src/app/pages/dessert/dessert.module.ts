@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { TableFilterItemComponent } from './components';
-import { SharedModule } from '../../shared/modules';
+import { SharedFormsModule, SharedModule } from '../../shared/modules';
 import { DataBindVisibilityDirective } from '../../shared/directives';
 import {
   SdwiNumericInputModule,
@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     FormsModule,
     SharedModule,
+    SharedFormsModule,
     SdwiNumericInputModule,
     ViewerModule,
     EmptyTableStateModule,

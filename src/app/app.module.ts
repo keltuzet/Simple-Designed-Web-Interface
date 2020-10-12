@@ -12,6 +12,8 @@ import { ContactsModule } from '@pages/contacts/contacts.module';
 import { HeaderModule } from '@shared/components';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { RouterModule } from '@angular/router';
+import { ChildModule } from '@pages/contacts/components/child/child.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,6 +29,8 @@ import { AppRoutingModule } from './app-routing.module';
     ClientsModule,
     ClientNotFoundModule,
     ContactsModule,
+    RouterModule,
+    // ChildModule
   ],
   providers: [],
   bootstrap: [AppComponent],

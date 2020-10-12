@@ -1,0 +1,41 @@
+<ng-content></ng-content>
+
+<!-- <app-branch>
+  <app-branch-content></app-branch-content>
+</app-branch> -->
+
+
+<div class="sdwi-login">
+
+  <h3>Authorization</h3>
+
+  <form [formGroup]="formGroup" class="swdi-form" autocomplete="off">
+    <app-sdwi-form-field>
+      <app-sdwi-label>Name</app-sdwi-label>
+      <input swdiInput formControlName="name" class="sdwi-input" type="text">
+      <app-sdwi-error></app-sdwi-error>
+    </app-sdwi-form-field>
+
+    <app-sdwi-form-field>
+      <app-sdwi-label>Email</app-sdwi-label>
+      <input swdiInput formControlName="email" class="sdwi-input" type="email" autocomplete="email">
+      <app-sdwi-error></app-sdwi-error>
+    </app-sdwi-form-field>
+
+    <app-sdwi-form-field>
+      <app-sdwi-label>Password</app-sdwi-label>
+      <input swdiInput formControlName="password" class="sdwi-input" type="password" autocomplete="new-password">
+      <app-sdwi-error></app-sdwi-error>
+    </app-sdwi-form-field>
+
+    <app-sdwi-form-field>
+      <app-sdwi-label>Confir password</app-sdwi-label>
+      <input swdiInput formControlName="confirmPassword" class="sdwi-input" type="password" autocomplete="new-password">
+      <app-sdwi-error></app-sdwi-error>
+    </app-sdwi-form-field>
+  </form>
+
+  <!-- <ng-content></ng-content> -->
+</div>
+
+

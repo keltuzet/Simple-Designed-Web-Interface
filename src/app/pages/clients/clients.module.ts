@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
   EmptyTableStateModule,
+  SdwiErrorModule,
+  SdwiFormFieldModule,
+  SdwiLabelModule,
+  SdwiNumericInputModule,
   SpinnerWrapperModule,
   ViewerModule,
 } from '@shared/components';
-import { SharedModule } from '@shared/modules';
+import { SdwiInputModule } from '@shared/directives';
+import { SharedFormsModule, SharedModule } from '@shared/modules';
 import { ClientsDatabaseModule } from '@shared/services';
 import { ClientsComponent } from './clients.component';
 
@@ -13,9 +18,15 @@ import { ClientsComponent } from './clients.component';
   declarations: [ClientsComponent],
   imports: [
     SharedModule,
+    SharedFormsModule,
     ViewerModule,
     EmptyTableStateModule,
     SpinnerWrapperModule,
+    SdwiNumericInputModule,
+    SdwiFormFieldModule,
+    SdwiLabelModule,
+    SdwiErrorModule,
+    SdwiInputModule,
     RouterModule,
     ClientsDatabaseModule,
   ],

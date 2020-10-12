@@ -1,13 +1,16 @@
 app-sdwi-form-field {
   display: inline-flex;
   @include flex-pos(column, wrap);
-  margin: 1rem 0.5rem 0 0.5rem;
+  margin-top: 0.5rem;
   position: relative;
   padding: 1.5rem 0 1rem 0;
+  width: 100%;
+  max-width: 25rem;
 
   input {
     @include default-input;
     padding: $small-space;
+    width: 100%;
   }
 
   .label {
@@ -18,6 +21,8 @@ app-sdwi-form-field {
     flex-flow: row nowrap;
 
     line-height: 1rem;
+    font-size: 0.875em;
+    color: #656565;
   }
 
   app-sdwi-error {

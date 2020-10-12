@@ -1,0 +1,4 @@
+.swdi-form {
+  @include flex(flex, flex-start, center);
+  @include flex-pos(column, wrap);
+}

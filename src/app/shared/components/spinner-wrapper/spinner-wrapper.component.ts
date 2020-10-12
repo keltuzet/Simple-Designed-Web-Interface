@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
 })
 export class SpinnerWrapperComponent {
   @Input() name: string;
+  @Input() title: string;
   @Input() options: object;
 }

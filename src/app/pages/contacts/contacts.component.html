@@ -1,12 +1,65 @@
 
-<form [formGroup]="formGroup">
+<!-- <h3>Contact component</h3>
+<button (click)="handleAdd()" class="sdwi-button">add user</button>
+<button (click)="handleShow()" class="sdwi-button">show users</button>
+<hr>
+<app-child></app-child> -->
+
+
+<!-- <button (click)="addBook()" class="sdwi-button">add book</button> -->
+<!-- <div class="card light-border" #free appCompleted></div>
+
+<ng-template #baseFilterOperatorsTemplate >
+  <div class="base-filter-operators">
+    <button class="sdwi-button">
+      +
+    </button>
+    <button  class="sdwi-button">
+      -
+    </button>
+  </div>
+</ng-template>
+
+<ng-template #view></ng-template>
+
+<ng-template #book let-title="title" let-description="description">
+  <div class="card">
+    <h3>{{title}}</h3>
+    <p>{{description}}</p>
+    <button class="sdwi-button">Add book</button>
+  </div>
+</ng-template> -->
+
+<!-- <ng-container #view></ng-container> -->
+
+
+
+<!-- <ng-container><div>This is div!</div></ng-container> -->
+
+
+<form  class="swdi-form" [formGroup]="formGroup">
   <app-sdwi-form-field>
-    <app-sdwi-label>Label</app-sdwi-label>
-    <input *appSdwiInput [formControl]="formGroup.controls.name">
-    <app-sdwi-error>{{getError()}}</app-sdwi-error>
+    <app-sdwi-label>First name</app-sdwi-label>
+    <input formControlName="firstName" class="sdwi-input" type="text">
+    <app-sdwi-error></app-sdwi-error>
   </app-sdwi-form-field>
 
   <app-sdwi-form-field>
-    <input formControlName="email">
+    <app-sdwi-label>Last name</app-sdwi-label>
+    <input formControlName="lastName" class="sdwi-input" type="text">
+    <app-sdwi-error>
+    </app-sdwi-error>
+  </app-sdwi-form-field>
+
+  <app-sdwi-form-field>
+    <app-sdwi-label>Email</app-sdwi-label>
+    <input swdiInput formControlName="email" class="sdwi-input" type="email">
+    <app-sdwi-error>{{formGroup.controls.email.errorMessage}}</app-sdwi-error>
+  </app-sdwi-form-field>
+
+  <app-sdwi-form-field>
+    <app-sdwi-label>Custom email</app-sdwi-label>
+    <input formControlName="comment" class="sdwi-input" type="text">
+    <app-sdwi-error></app-sdwi-error>
   </app-sdwi-form-field>
 </form>

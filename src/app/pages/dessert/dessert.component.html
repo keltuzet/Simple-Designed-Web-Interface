@@ -1,10 +1,10 @@
 <div class="container">
-  <app-viewer [title]="'table with sticky header'">
-    <div class="sdwi-table">
-      <div class="sdwi-table-header">
+  <app-viewer [title]="viewerTitle">
+    <div class="table">
+      <div class="table-header">
       </div>
 
-      <div class="sdwi-table-content">
+      <div class="table-content">
         <table class="sticky-header">
           <thead>
             <tr>
@@ -22,7 +22,7 @@
           <tbody>
             <tr *ngFor="let dessert of desserts; let i=index">
               <ng-container [ngTemplateOutletContext]="{ index: i, dessert: dessert }"
-                [ngTemplateOutlet]="i === editRowIndex ? editModelRowTemplate : showModelRowTemplate"></ng-container>
+                [ngTemplateOutlet]="i === editRowIndex ? rowEditTpl : rowDisplayTpl"></ng-container>
             </tr>
             <ngx-spinner name="desserts-table"></ngx-spinner>
             <app-empty-table-state *ngIf="!desserts?.length" [colspan]="6"></app-empty-table-state>
@@ -31,13 +31,14 @@
       </div>
 
       <div class="sdwi-table-footer">
-        <app-paginator [default]="false" [length]="desserts?.length" [pageCount]="13" [(Current)]="currentPage" [showPaginatorInfo]="true" [showPageSizeOptions]="true"></app-paginator>
+        <app-paginator [default]="false" [length]="desserts?.length" [pageCount]="13" [(Current)]="currentPage"
+          [showPaginatorInfo]="true" [showPageSizeOptions]="true"></app-paginator>
       </div>
     </div>
   </app-viewer>
 </div>
 
-<ng-template #showModelRowTemplate let-dessert="dessert" let-index="index">
+<ng-template #rowDisplayTpl let-dessert="dessert" let-index="index">
   <td>{{ dessert.name }}</td>
   <td>
     {{ dessert.calories }}
@@ -58,7 +59,7 @@
   </td>
 </ng-template>
 
-<ng-template #editModelRowTemplate let-dessert="dessert" let-index="index">
+<ng-template #rowEditTpl let-dessert="dessert">
   <td>
     <input [formControl]="rowForm.controls.name" class="sdwi-input">
   </td>
