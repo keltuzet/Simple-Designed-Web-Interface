@@ -4,7 +4,7 @@
       <input [formControl]="formControl" class="sdwi-input" type="text">
     </ng-container>
     <ng-container *ngSwitchCase="CustomInputTypes.Number">
-      <app-sdwi-numeric-input [formControl]="formControl" [min]="3" [max]="5"></app-sdwi-numeric-input>
+      <app-numeric-input [formControl]="formControl" [min]="3" [max]="5"></app-numeric-input>
     </ng-container>
     <ng-container *ngSwitchCase="CustomInputTypes.Date">
       <input [formControl]="formControl" type="date">

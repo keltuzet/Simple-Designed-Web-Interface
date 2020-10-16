@@ -85,31 +85,47 @@
 
 <ng-template #rowCreateTpl>
   <tr>
-    <form [formGroup]="clientCreateForm">
     <td>
-      <app-sdwi-form-field>
-        <app-sdwi-label>Names</app-sdwi-label>
-        <!-- <input [formControl]="clientCreateForm.controls.fullName" class="sdwi-input" type="text"> -->
-        <app-sdwi-error></app-sdwi-error>
-      </app-sdwi-form-field>
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.fullName" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.dob" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.dob" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.email" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.email" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.lastSeenDate" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.lastSeenDate" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.lastTransaction" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.lastTransaction" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.account" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.account" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
-      <!-- <input [formControl]="clientCreateForm.controls.status" class="sdwi-input"> -->
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.status" class="sdwi-input" type="text">
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
     </td>
     <td>
       <div class="cell-buttons">
@@ -117,6 +133,5 @@
         <button (click)="handleCancelCreate()" class="sdwi-button">Cancel</button>
       </div>
     </td>
-  </form>
   </tr>
 </ng-template>

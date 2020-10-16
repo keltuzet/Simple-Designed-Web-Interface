@@ -15,7 +15,7 @@ import {
   ViewContainerRef,
   ViewRef,
 } from '@angular/core';
-import { Validators } from '@angular/forms';
+import { FormControl, FormControlName, NgControl, Validators } from '@angular/forms';
 import { DessertService } from '@pages/dessert/dessert.service';
 import { CustomValidator } from '@shared/const';
 import { ExtendedFormGroup, ExtendedFormControl } from '@shared/models';
@@ -32,20 +32,29 @@ export class ContactsComponent implements OnInit, AfterViewInit {
   formGroup = new ExtendedFormGroup({
     firstName: new ExtendedFormControl('', [
       Validators.required,
-      CustomValidator.forbiddenWords(['fuck', 'dick', 'bitch']),
+      CustomValidator.personName(true)
     ]),
     lastName: new ExtendedFormControl('', [
-      CustomValidator.forbiddenWords(['fuck', 'dick', 'bitch']),
+      CustomValidator.personName()
     ]),
     email: new ExtendedFormControl('', [
       CustomValidator.email,
       CustomValidator.forbiddenWords(['fuck', 'dick', 'bitch']),
     ]),
+    phoneNumber: new ExtendedFormControl(),
     comment: new ExtendedFormControl(
       '',
       CustomValidator.forbiddenWords(['fuck', 'dick', 'bitch'])
     ),
+    count: new ExtendedFormControl(34),
   });
+
+  customPattern = {
+    M: {
+      symbol: 'X',
+      pattern: new RegExp('\[0-9\]'),
+    }
+  };
 
   currentId = 214;
   currentName = 'Jhon';
@@ -53,7 +62,7 @@ export class ContactsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('book', { read: TemplateRef }) book: TemplateRef<any>;
   @ViewChild('view', { read: ViewContainerRef }) view: ViewContainerRef;
-  @ViewChild('free', { read: ViewContainerRef }) empty: ViewContainerRef;
+  @ViewChild('control', { read: FormControlName }) control: FormControlName;
   @ViewChild(CompletedDirective) direct: CompletedDirective;
   @ViewChild(ChildComponent) child: ChildComponent;
   // @ViewChildren(DessertService) service: DessertService;
@@ -72,12 +81,15 @@ export class ContactsComponent implements OnInit, AfterViewInit {
     // setTimeout(() => {
     //   // this.currentId = 155;
     // }, 2000);
+
+    this.formGroup.controls.phoneNumber.valueChanges.subscribe((val) => console.log(val));
+    this.formGroup.controls.comment.valueChanges.subscribe((val) => console.log(val));
   }
 
   ngAfterViewInit(): void {
     // console.log(this.book);
     // console.log(this.view);
-    // console.log(this.empty);
+    // console.log(this.control);
     // console.log(this.direct);
     // console.log(this.child);
     // console.log(this.service);

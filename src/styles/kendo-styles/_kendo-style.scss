@@ -2,6 +2,9 @@
 @import "./variables";
 @import "./mixins";
 
+// custom utilities
+@import "./utilities/text";
+
 // custom components
 @import "./components/header";
 @import "./components/not-found";

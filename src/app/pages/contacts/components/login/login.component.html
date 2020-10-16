@@ -10,29 +10,29 @@
   <h3>Authorization</h3>
 
   <form [formGroup]="formGroup" class="swdi-form" autocomplete="off">
-    <app-sdwi-form-field>
-      <app-sdwi-label>Name</app-sdwi-label>
+    <app-form-field>
+      <app-field-label>Name</app-field-label>
       <input swdiInput formControlName="name" class="sdwi-input" type="text">
-      <app-sdwi-error></app-sdwi-error>
-    </app-sdwi-form-field>
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
 
-    <app-sdwi-form-field>
-      <app-sdwi-label>Email</app-sdwi-label>
+    <app-form-field>
+      <app-field-label>Email</app-field-label>
       <input swdiInput formControlName="email" class="sdwi-input" type="email" autocomplete="email">
-      <app-sdwi-error></app-sdwi-error>
-    </app-sdwi-form-field>
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
 
-    <app-sdwi-form-field>
-      <app-sdwi-label>Password</app-sdwi-label>
+    <app-form-field>
+      <app-field-label>Password</app-field-label>
       <input swdiInput formControlName="password" class="sdwi-input" type="password" autocomplete="new-password">
-      <app-sdwi-error></app-sdwi-error>
-    </app-sdwi-form-field>
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
 
-    <app-sdwi-form-field>
-      <app-sdwi-label>Confir password</app-sdwi-label>
+    <app-form-field>
+      <app-field-label>Confir password</app-field-label>
       <input swdiInput formControlName="confirmPassword" class="sdwi-input" type="password" autocomplete="new-password">
-      <app-sdwi-error></app-sdwi-error>
-    </app-sdwi-form-field>
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </form>
 
   <!-- <ng-content></ng-content> -->

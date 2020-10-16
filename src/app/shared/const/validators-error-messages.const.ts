@@ -17,5 +17,11 @@ export const ValidatorsErrorMessages = {
     const words = option?.forbiddenWords.map((word) => `"${word}"`).join(', ');
     return `The words: ${words} are forbidden!`;
   },
-
+  [CustomValidatorErrors.PERSON_NAME](
+    option: ValidatorErrorOptionModel
+  ): string {
+    return option.isMiddleNameRequired
+      ? 'Write your first name, last name, middle name'
+      : 'write your first name, last name';
+  },
 };

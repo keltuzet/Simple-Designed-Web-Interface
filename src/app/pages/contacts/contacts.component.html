@@ -1,4 +1,3 @@
-
 <!-- <h3>Contact component</h3>
 <button (click)="handleAdd()" class="sdwi-button">add user</button>
 <button (click)="handleShow()" class="sdwi-button">show users</button>
@@ -37,29 +36,48 @@
 <!-- <ng-container><div>This is div!</div></ng-container> -->
 
 
-<form  class="swdi-form" [formGroup]="formGroup">
-  <app-sdwi-form-field>
-    <app-sdwi-label>First name</app-sdwi-label>
-    <input formControlName="firstName" class="sdwi-input" type="text">
-    <app-sdwi-error></app-sdwi-error>
-  </app-sdwi-form-field>
+<form class="swdi-form" [formGroup]="formGroup">
+  <app-form-field>
+    <app-field-label>First name</app-field-label>
+    <input #controlAnchor formControlName="firstName" class="sdwi-input" type="text">
+    <app-field-error-label></app-field-error-label>
+  </app-form-field>
 
-  <app-sdwi-form-field>
-    <app-sdwi-label>Last name</app-sdwi-label>
-    <input formControlName="lastName" class="sdwi-input" type="text">
-    <app-sdwi-error>
-    </app-sdwi-error>
-  </app-sdwi-form-field>
+  <app-form-field>
+    <app-field-label>Last name</app-field-label>
+    <input #controlAnchor formControlName="lastName" class="sdwi-input" type="text">
+    <app-field-error-label>
+    </app-field-error-label>
+  </app-form-field>
 
-  <app-sdwi-form-field>
-    <app-sdwi-label>Email</app-sdwi-label>
-    <input swdiInput formControlName="email" class="sdwi-input" type="email">
-    <app-sdwi-error>{{formGroup.controls.email.errorMessage}}</app-sdwi-error>
-  </app-sdwi-form-field>
+  <app-form-field>
+    <app-field-label>Email</app-field-label>
+    <input #controlAnchor formControlName="email" class="sdwi-input" type="email">
+    <app-field-error-label>{{formGroup.controls.email.errorMessage}}</app-field-error-label>
+  </app-form-field>
 
-  <app-sdwi-form-field>
-    <app-sdwi-label>Custom email</app-sdwi-label>
-    <input formControlName="comment" class="sdwi-input" type="text">
-    <app-sdwi-error></app-sdwi-error>
-  </app-sdwi-form-field>
+  <app-form-field>
+    <app-field-label>Phone number</app-field-label>
+    <input prefix="+" [showMaskTyped]="true" placeHolderCharacter="*" suffix="$" mask=""  #controlAnchor [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
+    <app-field-error-label></app-field-error-label>
+  </app-form-field>
+
+  <app-form-field>
+    <app-field-label>Comment</app-field-label>
+    <input mask="M-M" [showMaskTyped]="true" [patterns]="customPattern" #controlAnchor [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
+    <!--formControlName="comment"-->
+    <app-field-error-label></app-field-error-label>
+  </app-form-field>
+
+  <app-form-field>
+    <app-field-label>Count</app-field-label>
+    <app-numeric-input [max]="465" [min]="2" #controlAnchor formControlName="count"></app-numeric-input>
+    <app-field-error-label></app-field-error-label>
+  </app-form-field>
+
+  <!-- <app-form-field>
+    <app-field-label>Count</app-field-label>
+    <input [max]="4" #controlAnchor formControlName="count" type="number">
+    <app-field-error-label></app-field-error-label>
+  </app-form-field> -->
 </form>

@@ -1,10 +1,11 @@
-import { AbstractControl, FormControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { CustomValidatorErrors } from '@shared/enums';
 import { ValidatorErrorOptionModel } from '@shared/models';
 
 export interface CustomValidatorModel {
   email: ValidatorFn;
   forbiddenWords: (words: string[]) => ValidatorFn;
+  personName: (isMiddleNameRequired?: boolean) => ValidatorFn;
 }
 
 export const CustomValidator: CustomValidatorModel = {
@@ -15,7 +16,7 @@ export const CustomValidator: CustomValidatorModel = {
     ): { [key: string]: ValidatorErrorOptionModel } | null => {
       return !control.value || emailRegExp.test(control.value)
         ? null
-        : { [CustomValidatorErrors.EMAIL]: { value: control.value, control } };
+        : { [CustomValidatorErrors.EMAIL]: { control } };
     };
   },
   forbiddenWords(words: string[]): ValidatorFn {
@@ -33,6 +34,18 @@ export const CustomValidator: CustomValidatorModel = {
               forbiddenWords: words,
             },
           };
+    };
+  },
+  personName(isMiddleNameRequired?: boolean): ValidatorFn {
+    const nameRegExp = isMiddleNameRequired
+      ? /^[a-zа-я]+( |,|, )[a-zа-я]+\1[a-zа-я]+$/i
+      : /^[a-zа-я]+( |,|, )[a-zа-я]+$/i;
+    return (
+      control: AbstractControl
+    ): { [key: string]: ValidatorErrorOptionModel } | null => {
+      return !control.value || nameRegExp.test(control.value)
+        ? null
+        : { [CustomValidatorErrors.PERSON_NAME]: { control, isMiddleNameRequired } };
     };
   },
 };

@@ -2,14 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
   EmptyTableStateModule,
-  SdwiErrorModule,
-  SdwiFormFieldModule,
-  SdwiLabelModule,
-  SdwiNumericInputModule,
+  FieldModule,
+  NumericInputModule,
   SpinnerWrapperModule,
   ViewerModule,
 } from '@shared/components';
-import { SdwiInputModule } from '@shared/directives';
 import { SharedFormsModule, SharedModule } from '@shared/modules';
 import { ClientsDatabaseModule } from '@shared/services';
 import { ClientsComponent } from './clients.component';
@@ -22,11 +19,8 @@ import { ClientsComponent } from './clients.component';
     ViewerModule,
     EmptyTableStateModule,
     SpinnerWrapperModule,
-    SdwiNumericInputModule,
-    SdwiFormFieldModule,
-    SdwiLabelModule,
-    SdwiErrorModule,
-    SdwiInputModule,
+    NumericInputModule,
+    FieldModule,
     RouterModule,
     ClientsDatabaseModule,
   ],
