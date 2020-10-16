@@ -13,7 +13,7 @@ import { HeaderModule } from '@shared/components';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
-import { ChildModule } from '@pages/contacts/components/child/child.module';
+import { AnimationsModule } from '@pages/animations/animations.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -30,7 +30,7 @@ import { ChildModule } from '@pages/contacts/components/child/child.module';
     ClientNotFoundModule,
     ContactsModule,
     RouterModule,
-    // ChildModule
+    AnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

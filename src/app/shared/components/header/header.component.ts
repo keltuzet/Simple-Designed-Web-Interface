@@ -28,6 +28,11 @@ export class HeaderComponent implements OnInit {
         path: ROUTE.contacts,
         text: 'Contacts'
       },
+      {
+        icon: Icons.animations,
+        path: ROUTE.animations,
+        text: 'Animations'
+      },
     ];
   }
 

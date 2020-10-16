@@ -5,5 +5,6 @@ export const ROUTE = Object.freeze({
   client_not_found: 'client-not-found',
   home: 'desserts',
   contacts: 'contacts',
+  animations: 'animations',
   not_found: '**',
 });

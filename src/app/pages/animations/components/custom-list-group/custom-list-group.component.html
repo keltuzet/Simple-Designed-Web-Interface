@@ -1,0 +1,10 @@
+<div class="list-group">
+  <form (submit)="handleTaskAdd(inp.value)">
+    <input #inp class="list-group__input" type="text" />
+  </form>
+  <ul class="list-group__item-wrapper">
+    <li @appear *ngFor="let item of list; let i=index" class="list-group__item">
+      <span>{{ item }}</span><fa-icon (click)="handleRemoveTask(i)" [icon]="icons.delete"></fa-icon>
+    </li>
+  </ul>
+</div>
