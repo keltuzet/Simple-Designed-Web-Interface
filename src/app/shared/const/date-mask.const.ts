@@ -1,0 +1,1 @@
+export const DATE_MASK: string = 'M0/d0/0000'

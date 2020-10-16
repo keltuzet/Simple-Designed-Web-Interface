@@ -10,6 +10,7 @@ export interface ClientBaseResponseModel extends PersonNameModel {
   id: number;
   DOB: string | Date;
   email: string;
+  phoneNumber: string,
   lastSeenDate: string | Date;
   lastTransaction: string | Date;
   account: number;
@@ -23,6 +24,7 @@ export class ClientBaseModel implements ClientBaseResponseModel {
   middleName?: string;
   DOB: string | Date;
   email: string;
+  phoneNumber: string;
   lastSeenDate: string | Date;
   lastTransaction: string | Date;
   account: number;

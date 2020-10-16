@@ -1,5 +1,5 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { ClientTableColumns } from '@shared/const';
+import { ClientTableColumns, DATE_MASK, PHONE_NUMBER_MASK } from '@shared/const';
 import { Observable, Subscription } from 'rxjs';
 import {} from 'lodash';
 
@@ -19,6 +19,8 @@ export class ClientsComponent implements OnInit {
   clients: ClientBaseModel[];
   $subscription: Subscription[] = [];
   clientsColumn = ClientTableColumns;
+  phoneNumberMask = PHONE_NUMBER_MASK;
+  dateMask = DATE_MASK;
   clientCreateForm = new ExtendedFormGroup({
     fullName: new ExtendedFormControl(null, Validators.required),
     dob: new ExtendedFormControl(null),
