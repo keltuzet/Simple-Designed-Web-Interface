@@ -20,7 +20,11 @@
   }
 
   &:focus {
-    border-color: $default-border-color-hover;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03), 0 4px 5px 0 rgba(0, 0, 0, 0.04);
+    @extend .input-focus;
   }
+}
+
+.input-focus {
+  border-color: $default-border-color-hover;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03), 0 4px 5px 0 rgba(0, 0, 0, 0.04);
 }

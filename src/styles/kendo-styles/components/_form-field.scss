@@ -1,4 +1,4 @@
-app-sdwi-form-field {
+app-form-field {
   display: inline-flex;
   @include flex-pos(column, wrap);
   margin-top: 0.5rem;
@@ -7,8 +7,15 @@ app-sdwi-form-field {
   width: 100%;
   max-width: 25rem;
 
+  &.no-label {
+    padding-top: 0;
+  }
+
+  &.no-error-label {
+    padding-bottom: 0;
+  }
+
   input {
-    @include default-input;
     padding: $small-space;
     width: 100%;
   }
@@ -25,7 +32,7 @@ app-sdwi-form-field {
     color: #656565;
   }
 
-  app-sdwi-error {
+  app-field-error-label {
     width: 100%;
     overflow: hidden;
     position: absolute;

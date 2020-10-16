@@ -4,7 +4,7 @@ import { TableFilterItemComponent } from './components';
 import { SharedFormsModule, SharedModule } from '../../shared/modules';
 import { DataBindVisibilityDirective } from '../../shared/directives';
 import {
-  SdwiNumericInputModule,
+  NumericInputModule,
   ViewerModule,
   EmptyTableStateModule,
   SdwiPaginatorModule,
@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     SharedModule,
     SharedFormsModule,
-    SdwiNumericInputModule,
+    NumericInputModule,
     ViewerModule,
     EmptyTableStateModule,
     SdwiPaginatorModule,

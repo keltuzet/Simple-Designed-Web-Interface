@@ -1,24 +1,20 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
 import {
   HeaderModule,
-  SdwiErrorModule,
-  SdwiFormFieldModule,
-  SdwiLabelModule,
+  FieldModule,
+  NumericInputModule,
 } from '@shared/components';
-import { SdwiInputModule } from '@shared/directives';
-import { ContactsComponent } from './contacts.component';
+import { SharedFormsModule } from '@shared/modules';
 
+import { ContactsComponent } from './contacts.component';
 import { LoginComponent } from './components';
 import { ChildModule } from './components/child/child.module';
 import { SimpleDirective } from './directives/simple.directive';
 import { CompletedDirective } from './directives/completed.directive';
-import { DessertService } from '@pages/dessert/dessert.service';
-import { ContactsService } from './contacts.service';
-import { SharedFormsModule } from '@shared/modules';
+import { NgxMaskModule } from 'ngx-mask';
 
 @NgModule({
   declarations: [
@@ -31,14 +27,14 @@ import { SharedFormsModule } from '@shared/modules';
     CommonModule,
     NgxSpinnerModule,
     SharedFormsModule,
-    SdwiFormFieldModule,
-    SdwiLabelModule,
-    SdwiErrorModule,
-    SdwiInputModule,
+    FieldModule,
+    NumericInputModule,
     HeaderModule,
-    ChildModule
+    ChildModule,
+    NgxMaskModule.forRoot()
   ],
   exports: [],
   providers: [],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ContactsModule {}
