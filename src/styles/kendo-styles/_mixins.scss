@@ -8,6 +8,25 @@
   border-style: solid;
 }
 
+@mixin default-control {
+  height: 2rem;
+  // padding: $small-space;
+  border-radius: 2px;
+  border: 1px solid $default-border-color;
+  line-height: 1.4285714286em;
+  color: $default-text-color;
+  background-color: #fff;
+  font-size: 0.85em;
+
+  &:hover {
+    @extend .control-hover;
+  }
+
+  &:focus {
+    @extend .control-focus;
+  }
+}
+
 @mixin default-input {
   @include default-form-wrapp;
   color: $default-text-color;
@@ -20,11 +39,15 @@
   }
 
   &:focus {
-    @extend .input-focus;
+    @extend .control-focus;
   }
 }
 
-.input-focus {
+.control-hover {
+  border-color: $default-border-color-hover;
+}
+
+.control-focus {
   border-color: $default-border-color-hover;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.03), 0 4px 5px 0 rgba(0, 0, 0, 0.04);
 }

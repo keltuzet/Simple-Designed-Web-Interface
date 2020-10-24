@@ -1,6 +1,6 @@
 <div #wrap class="sdwi-numeric-input">
   <input [ngModel]="value" (ngModelChange)="handleUpdateValue($event)" (focus)="handleInputFocus($event)"
-    (blur)="handleInputBlur()" [disabled]="disabled" [placeholder]="placeholder" [ngClass]="{'input-focus': focused}"
+    (blur)="handleInputBlur()" [disabled]="disabled" [placeholder]="placeholder" [ngClass]="{'control-focus': focused}"
     type="number">
   <span class="arrow-wrap no-user-select">
     <span (click)="handleUpdateValue(value + 1)" class="arrow-up">

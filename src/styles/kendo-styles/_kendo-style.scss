@@ -1,3 +1,6 @@
+// cdk styles
+@import '~@angular/cdk/overlay-prebuilt.css';
+
 // tools, variables
 @import "./variables";
 @import "./mixins";
@@ -10,9 +13,11 @@
 @import "./components/not-found";
 @import "./components/paginator";
 @import "./components/form-field";
+@import "./components/select";
 
 // foreign components
 @import "./foreign/loader";
+@import "./foreign/overlay";
 
 // native components
 @import "./table";
@@ -20,3 +25,4 @@
 @import "./input";
 @import "./form";
 @import "./icon";
+@import "./control";

@@ -47,6 +47,7 @@ export class ContactsComponent implements OnInit, AfterViewInit {
       CustomValidator.forbiddenWords(['fuck', 'dick', 'bitch'])
     ),
     count: new ExtendedFormControl(34),
+    gender: new ExtendedFormControl(3)
   });
 
   customPattern = {
@@ -56,6 +57,18 @@ export class ContactsComponent implements OnInit, AfterViewInit {
     }
   };
 
+  options = [
+    { val: 0, viewValue: '34'},
+    { val: 1, viewValue: 'milk'},
+    { val: 3, viewValue: 'beer'},
+    { val: 4, viewValue: 'apple'},
+    { val: 5, viewValue: 'orange'},
+    { val: 6, viewValue: 'cheese'},
+    { val: 7, viewValue: 'chocolate'},
+    { val: 8, viewValue: 'apple juice'},
+    { val: 9, viewValue: 'water'},
+    { val: 10, viewValue: 'limon'},
+  ];
   currentId = 214;
   currentName = 'Jhon';
   bool = true;

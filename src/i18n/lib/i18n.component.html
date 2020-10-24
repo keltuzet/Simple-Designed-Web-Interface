@@ -1,0 +1,6 @@
+<app-select class="language-select" [formControl]="control" [value]="selectedLanguage.value"
+  (valueChange)="handleChange($event)">
+  <app-option *ngFor="let language of languages" [value]="language.value">
+    {{ language.label | uppercase }}
+  </app-option>
+</app-select>

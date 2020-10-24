@@ -26,7 +26,8 @@ export class FormFieldComponent implements AfterContentInit {
       this.control = this.ngControl.control as ExtendedFormControl;
     }
     if (this.errorComponent) {
-      this.control.statusChanges.subscribe(() => {
+      this.control.registerOnChange(() => {});
+      this.control.valueChanges.subscribe(() => {
         this.errorComponent.errorText = this.control.errorMessage;
       });
     }

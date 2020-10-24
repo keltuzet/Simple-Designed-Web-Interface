@@ -1,0 +1,32 @@
+<div cdkOverlayOrigin #trigger="cdkOverlayOrigin" class="trigger">
+  <ng-container *ngIf="onHover; else selectDefaultTpl">
+    <div cdkOverlayOrigin class="select no-user-select" (mouseenter)="handleOpenPanel($event)"
+      (mouseleave)="handleClosePanel($event)">
+      <ng-container *ngTemplateOutlet="selectViewTpl"></ng-container>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #selectDefaultTpl>
+  <div class="select no-user-select" (click)="handleTogglePanelDisplay()">
+    <ng-container *ngTemplateOutlet="selectViewTpl"></ng-container>
+  </div>
+</ng-template>
+
+<ng-template #selectViewTpl>
+  <div class="select-value">
+    {{ viewValue }}
+  </div>
+  <button class="control-btn">
+    <fa-icon [icon]="icon"></fa-icon>
+  </button>
+</ng-template>
+
+<ng-template cdkConnectedOverlay cdkConnectedOverlayHasBackdrop [cdkConnectedOverlayOrigin]="trigger"
+  [cdkConnectedOverlayOpen]="isPanelDisplay" [cdkConnectedOverlayWidth]="actualPanelWidth">
+  <div class="mat-select-panel-wrap">
+    <div @collapse class="mat-select-panel">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</ng-template>

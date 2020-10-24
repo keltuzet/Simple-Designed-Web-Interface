@@ -1,12 +1,12 @@
 import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { ClientTableColumns, DATE_MASK, PHONE_NUMBER_MASK } from '@shared/const';
+import { DATE_MASK, DATE_TIME_MASK, PHONE_NUMBER_MASK } from '@shared/const';
 import { Observable, Subscription } from 'rxjs';
-import {} from 'lodash';
 
 import { ClientBaseModel } from './model/client-base.model';
+import { ClientTableColumns } from './consts';
 import { Router } from '@angular/router';
 import { ClientsDatabaseService } from '@shared/services';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { ExtendedFormControl, ExtendedFormGroup } from '@shared/models';
 
 @Component({
@@ -21,10 +21,12 @@ export class ClientsComponent implements OnInit {
   clientsColumn = ClientTableColumns;
   phoneNumberMask = PHONE_NUMBER_MASK;
   dateMask = DATE_MASK;
+  dateTimeMask = DATE_TIME_MASK;
   clientCreateForm = new ExtendedFormGroup({
     fullName: new ExtendedFormControl(null, Validators.required),
     dob: new ExtendedFormControl(null),
     email: new ExtendedFormControl(null, Validators.email),
+    phoneNumber: new ExtendedFormControl(null),
     lastSeenDate: new ExtendedFormControl(),
     lastTransaction: new ExtendedFormControl(),
     account: new ExtendedFormControl(),
@@ -34,9 +36,10 @@ export class ClientsComponent implements OnInit {
     fullName: new ExtendedFormControl(null, Validators.required),
     DOB: new ExtendedFormControl(null),
     email: new ExtendedFormControl(null, Validators.email),
+    phoneNumber: new ExtendedFormControl(null),
     lastSeenDate: new ExtendedFormControl({value: null, disabled: true}),
     lastTransaction: new ExtendedFormControl({value: null, disabled: true}),
-    account: new ExtendedFormControl({value: null, disabled: true}),
+    account: new ExtendedFormControl({value: null}),
     status: new ExtendedFormControl(),
   });
   // <td>{{ client.getFullName }}</td>
@@ -80,6 +83,10 @@ export class ClientsComponent implements OnInit {
   }
 
   handleUpdateRow(client: ClientBaseModel): void {
+    this.clientEditForm.markAllAsTouched();
+    if (this.clientEditForm.invalid) {
+      return;
+    }
     this.clientsDatabaseService.editClient({...this.clientEditForm.getRawValue(), id: client.id}).subscribe(() => {
       this.clients = null;
       this.getClients();
@@ -105,6 +112,7 @@ export class ClientsComponent implements OnInit {
   }
 
   handleCreate(): void {
+    this.clientCreateForm.markAllAsTouched();
     if (this.clientCreateForm.invalid) {
       return;
     }

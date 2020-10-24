@@ -1,1 +1,1 @@
-export const PHONE_NUMBER_MASK: string = '+(000)-000-000-000';
+export const PHONE_NUMBER_MASK = '+(000) 000-000-000';

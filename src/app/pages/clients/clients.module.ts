@@ -7,6 +7,7 @@ import {
   SpinnerWrapperModule,
   ViewerModule,
 } from '@shared/components';
+import { AnchorLinkFormatModule } from '@shared/pipes';
 import { SharedFormsModule, SharedModule } from '@shared/modules';
 import { ClientsDatabaseModule } from '@shared/services';
 import { ClientsComponent } from './clients.component';
@@ -23,6 +24,7 @@ import { ClientsComponent } from './clients.component';
     FieldModule,
     RouterModule,
     ClientsDatabaseModule,
+    AnchorLinkFormatModule,
   ],
   exports: [ClientsComponent],
   providers: [],

@@ -1,0 +1,85 @@
+.sdwi-input {
+  @include default-control;
+  padding: $small-space;
+}
+
+.sdwi-numeric-input {
+  @include default-control;
+  display: flex;
+
+  input {
+    color: inherit;
+    padding: $small-space;
+  }
+
+  .arrow-wrap {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    font-size: 1rem;
+    @extend .control-btn;
+  }
+
+  .arrow-up {
+    .ng-fa-icon {
+      top: -0.5px;
+    }
+  }
+
+  .arrow-down {
+    .ng-fa-icon {
+      top: -2.5px;
+    }
+  }
+
+  .arrow-up,
+  .arrow-down {
+    height: 50%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &:active {
+      color: $default-text-color-active;
+      box-shadow: inset 0 3px 4px 0 rgba(0, 0, 0, 0.08);
+      background-image: $default-button-gradient-hover;
+      background-color: $default-bg-color-hover;
+    }
+
+    &:hover {
+      background-image: $default-button-gradient-hover;
+      background-color: $default-bg-color-hover;
+    }
+
+    .ng-fa-icon {
+      display: inline-block;
+      height: 100%;
+      position: absolute;
+    }
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+}
+
+.control-btn {
+  width: calc(1.1rem + 12px);
+  text-align: center;
+  cursor: pointer;
+  color: $default-text-color;
+  background-color: $default-bg-color;
+  background-image: $default-button-gradient;
+
+  &:hover {
+    background-color: $default-bg-color-hover;
+    background-image: $default-button-gradient-hover;
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "COMMON": {
+    "PAGE": "Page"
+  },
+  "PAGES": {
+    "HOME": "Home",
+    "CLIENTS": "Clients",
+    "CONTACTS": "Contacts",
+    "ANIMATIONS": "Animations"
+  },
+  "NAV": {
+    "BRAND": "Brand"
+  },
+  "TITLES": {},
+  "TABLE_HEADERS": {
+    "DESSERTS": "Desserts",
+    "CALORIES": "Calories",
+    "FATS": "Fats",
+    "CARBS": "Carbs",
+    "PROTEINS": "Proteins",
+    "FULL_NAME": "Full name",
+    "DATE_OF_BIRTH": "Date of birth",
+    "EMAIL": "Email",
+    "PHONE_NUMBER": "Phone number",
+    "LAST_SEEN_DATE": "Last seen date",
+    "LAST_TRANSACTION": "Last transaction",
+    "ACCOUNT": "Account",
+    "STATUS": "Status"
+  }
+}

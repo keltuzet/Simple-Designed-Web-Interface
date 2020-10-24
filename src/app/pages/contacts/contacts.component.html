@@ -58,13 +58,15 @@
 
   <app-form-field>
     <app-field-label>Phone number</app-field-label>
-    <input prefix="+" [showMaskTyped]="true" placeHolderCharacter="*" suffix="$" mask=""  #controlAnchor [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
+    <input prefix="+" [showMaskTyped]="true" placeHolderCharacter="*" suffix="$" mask="" #controlAnchor
+      [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
     <app-field-error-label></app-field-error-label>
   </app-form-field>
 
   <app-form-field>
     <app-field-label>Comment</app-field-label>
-    <input mask="M-M" [showMaskTyped]="true" [patterns]="customPattern" #controlAnchor [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
+    <input mask="M-M" [showMaskTyped]="true" [patterns]="customPattern" #controlAnchor
+      [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
     <!--formControlName="comment"-->
     <app-field-error-label></app-field-error-label>
   </app-form-field>
@@ -72,6 +74,14 @@
   <app-form-field>
     <app-field-label>Count</app-field-label>
     <app-numeric-input [max]="465" [min]="2" #controlAnchor formControlName="count"></app-numeric-input>
+
+  </app-form-field>
+
+  <app-form-field class="no-error">
+    <app-field-label>Count</app-field-label>
+    <app-select #controlAnchor formControlName="gender">
+      <app-option *ngFor="let option of options" [value]="option.val">{{option.viewValue}}</app-option>
+    </app-select>
     <app-field-error-label></app-field-error-label>
   </app-form-field>
 

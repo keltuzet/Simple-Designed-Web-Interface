@@ -45,6 +45,7 @@ export class ClientBaseModel implements ClientBaseResponseModel {
         middleName: parsedNames.middleName,
         DOB: obj.DOB,
         email: obj.email,
+        phoneNumber: obj.phoneNumber,
         lastSeenDate: obj.lastSeenDate,
         lastTransaction: obj.lastTransaction,
         account: obj.account,

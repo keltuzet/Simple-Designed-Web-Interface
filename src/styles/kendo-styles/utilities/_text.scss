@@ -1,3 +1,11 @@
 .no-user-select {
   user-select: none;
 }
+
+a.link {
+  color: #6c92d8;
+
+  &:hover {
+    color: #104bb9;
+  }
+}

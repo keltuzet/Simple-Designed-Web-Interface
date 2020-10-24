@@ -7,13 +7,9 @@
         <table class="sticky-header selectable">
           <thead>
             <tr>
-              <th *ngFor="let column of clientsColumn">{{ column }}</th>
+              <th *ngFor="let column of clientsColumn">{{ column | translate }}</th>
               <th>
-                <button
-                  [disabled]="isCreatingClient"
-                  (click)="handleAddClient()"
-                  class="sdwi-button"
-                >
+                <button [disabled]="isCreatingClient" (click)="handleAddClient()" class="sdwi-button">
                   Add new
                 </button>
               </th>
@@ -30,22 +26,13 @@
           <tbody>
             <ng-container #clientCreateCnt></ng-container>
             <tr *ngFor="let client of clients; let i = index">
-              <ng-container
-                [ngTemplateOutletContext]="{ index: i, client: client }"
-                [ngTemplateOutlet]="
+              <ng-container [ngTemplateOutletContext]="{ index: i, client: client }" [ngTemplateOutlet]="
                   i === editRowIndex ? rowEditTpl : rowDisplayTpl
-                "
-              ></ng-container>
+                "></ng-container>
             </tr>
-            <app-spinner-wrapper
-              *ngIf="!clients"
-              name="clients-base-table"
-              title="Loading, please wait"
-            >
+            <app-spinner-wrapper *ngIf="!clients" name="clients-base-table" title="Loading, please wait">
             </app-spinner-wrapper>
-            <app-empty-table-state
-              *ngIf="clients ? !clients.length : false"
-            ></app-empty-table-state>
+            <app-empty-table-state *ngIf="clients ? !clients.length : false"></app-empty-table-state>
           </tbody>
         </table>
       </div>
@@ -55,19 +42,18 @@
 
 <ng-template #rowDisplayTpl let-client="client" let-index="index">
   <td>{{ client.fullName }}</td>
-  <td>{{ client.DOB | mask: dateMask }}</td>
-  <td>{{ client.email }}</td>
-  <td>{{ client.phoneNumber | mask: phoneNumberMask }}</td>
-  <td>{{ client.lastSeenDate | mask: dateMask }}</td>
-  <td>{{ client.lastTransaction | mask: dateMask }}</td>
-  <td>{{ client.account }}</td>
+  <td>{{ client.DOB | date:'shortDate' }}</td>
+  <td><a [href]="client.email | anchorLinkFormat" class="link">{{ client.email }}</a></td>
+  <td><a [href]="client.phoneNumber | mask:phoneNumberMask | anchorLinkFormat:'tel'"
+      class="link">{{ client.phoneNumber | mask:phoneNumberMask }}</a>
+  </td>
+  <td>{{ client.lastSeenDate | date:'short' }}</td>
+  <td>{{ client.lastTransaction | date:'short' }}</td>
+  <td>{{ client.account | currency:'RUB':'symbol-narrow':'1.1' }}</td>
   <td>{{ client.status }}</td>
   <td>
     <div class="cell-buttons">
-      <button
-        (click)="handleShowEditModel(index, client)"
-        class="sdwi-button danger"
-      >
+      <button (click)="handleShowEditModel(index, client)" class="sdwi-button danger">
         Edit
       </button>
       <button (click)="handleDeleteDessert(client.id)" class="sdwi-button">
@@ -79,48 +65,56 @@
 
 <ng-template #rowEditTpl let-client="client">
   <td>
-    <input
-      [formControl]="clientEditForm.controls.fullName"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor [formControl]="clientEditForm.controls.fullName" class="sdwi-input" type="text" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input [formControl]="clientEditForm.controls.DOB" class="sdwi-input" />
+    <app-form-field class="no-label">
+      <input #controlAnchor [mask]="dateMask" [formControl]="clientEditForm.controls.DOB" class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input
-      [value]="client.email"
-      [formControl]="clientEditForm.controls.email"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor [formControl]="clientEditForm.controls.email" class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input
-      [value]="client.lastSeenDate"
-      [formControl]="clientEditForm.controls.lastSeenDate"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor [mask]="phoneNumberMask" [formControl]="clientEditForm.controls.phoneNumber"
+        class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input
-      [value]="client.lastTransaction"
-      [formControl]="clientEditForm.controls.lastTransaction"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor [mask]="dateTimeMask" [formControl]="clientEditForm.controls.lastSeenDate"
+        class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input
-      [value]="client.account"
-      [formControl]="clientEditForm.controls.account"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor [mask]="dateTimeMask" [formControl]="clientEditForm.controls.lastTransaction"
+        class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
-    <input
-      [value]="client.status"
-      [formControl]="clientEditForm.controls.status"
-      class="sdwi-input"
-    />
+    <app-form-field class="no-label">
+      <input #controlAnchor suffix="$" mask="separator.2" [formControl]="clientEditForm.controls.account"
+        class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
+  </td>
+  <td>
+    <app-form-field class="no-label">
+      <input #controlAnchor [formControl]="clientEditForm.controls.status" class="sdwi-input" />
+      <app-field-error-label></app-field-error-label>
+    </app-form-field>
   </td>
   <td>
     <div class="cell-buttons">
@@ -136,78 +130,54 @@
   <tr>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.fullName"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor [formControl]="clientCreateForm.controls.fullName" class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.dob"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor [mask]="dateMask" [formControl]="clientCreateForm.controls.dob" class="sdwi-input"
+          type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.email"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor [formControl]="clientCreateForm.controls.email" class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.lastSeenDate"
-          class="sdwi-input"
-          type="text"
-        />
+        <input [showMaskTyped]="true" #controlAnchor [mask]="phoneNumberMask" [formControl]="clientCreateForm.controls.phoneNumber"
+          class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.lastTransaction"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor [mask]="dateTimeMask" [formControl]="clientCreateForm.controls.lastSeenDate"
+          class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.account"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor [mask]="dateTimeMask" [formControl]="clientCreateForm.controls.lastTransaction"
+          class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>
     <td>
       <app-form-field class="no-label">
-        <input
-          #controlAnchor
-          [formControl]="clientCreateForm.controls.status"
-          class="sdwi-input"
-          type="text"
-        />
+        <input #controlAnchor suffix="$" mask="separator.2" [formControl]="clientCreateForm.controls.account"
+          class="sdwi-input" type="text" />
+        <app-field-error-label></app-field-error-label>
+      </app-form-field>
+    </td>
+    <td>
+      <app-form-field class="no-label">
+        <input #controlAnchor [formControl]="clientCreateForm.controls.status" class="sdwi-input" type="text" />
         <app-field-error-label></app-field-error-label>
       </app-form-field>
     </td>

@@ -6,6 +6,7 @@ import {
   HeaderModule,
   FieldModule,
   NumericInputModule,
+  SelectModule,
 } from '@shared/components';
 import { SharedFormsModule } from '@shared/modules';
 
@@ -31,6 +32,7 @@ import { NgxMaskModule } from 'ngx-mask';
     NumericInputModule,
     HeaderModule,
     ChildModule,
+    SelectModule,
     NgxMaskModule.forRoot()
   ],
   exports: [],

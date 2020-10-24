@@ -1,0 +1,30 @@
+{
+  "COMMON": {
+    "PAGE": "Страница"
+  },
+  "PAGES": {
+    "HOME": "Главная",
+    "CLIENTS": "Клиенты",
+    "CONTACTS": "Контакты",
+    "ANIMATIONS": "Анимации"
+  },
+  "NAV": {
+    "BRAND": "Логотип"
+  },
+  "TITLES": {},
+  "TABLE_HEADERS": {
+    "DESSERTS": "Десерты",
+    "CALORIES": "Калории",
+    "FATS": "Жиры",
+    "CARBS": "Углеводы",
+    "PROTEINS": "Белки",
+    "FULL_NAME": "Полное имя",
+    "DATE_OF_BIRTH": "Дата рождения",
+    "EMAIL": "Эл. адрес",
+    "PHONE_NUMBER": "Телефонный номер",
+    "LAST_SEEN_DATE": "Дата последнего посещения",
+    "LAST_TRANSACTION_DATE": "Дата последней транзакции",
+    "ACCOUNT": "Счет",
+    "STATUS": "Статус"
+  }
+}
