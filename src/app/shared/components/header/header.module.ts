@@ -1,14 +1,14 @@
-import { CommonModule } from '@angular/common';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { I18nModule } from '@i18n';
+import { SharedModule } from '@shared/modules';
 import { HeaderComponent } from './header.component';
 
 @NgModule({
   declarations: [HeaderComponent],
   exports: [HeaderComponent],
-  imports: [FontAwesomeModule, CommonModule, RouterModule, I18nModule],
+  imports: [SharedModule, RouterModule, I18nModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class HeaderModule {}

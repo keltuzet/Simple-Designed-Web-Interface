@@ -10,7 +10,7 @@
               <th *ngFor="let column of clientsColumn">{{ column | translate }}</th>
               <th>
                 <button [disabled]="isCreatingClient" (click)="handleAddClient()" class="sdwi-button">
-                  Add new
+                  {{ 'BUTTONS.ADD_NEW' | translate}}
                 </button>
               </th>
             </tr>
@@ -54,10 +54,10 @@
   <td>
     <div class="cell-buttons">
       <button (click)="handleShowEditModel(index, client)" class="sdwi-button danger">
-        Edit
+        {{ 'BUTTONS.EDIT' | translate}}
       </button>
       <button (click)="handleDeleteDessert(client.id)" class="sdwi-button">
-        Remove
+        {{ 'BUTTONS.REMOVE' | translate}}
       </button>
     </div>
   </td>
@@ -183,9 +183,11 @@
     </td>
     <td>
       <div class="cell-buttons">
-        <button (click)="handleCreate()" class="sdwi-button">Update</button>
+        <button (click)="handleCreate()" class="sdwi-button">
+          {{ 'BUTTONS.UPDATE' | translate}}
+        </button>
         <button (click)="handleCancelCreate()" class="sdwi-button">
-          Cancel
+          {{ 'BUTTONS.CANCEL' | translate}}
         </button>
       </div>
     </td>

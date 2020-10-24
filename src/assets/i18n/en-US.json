@@ -3,13 +3,28 @@
     "PAGE": "Page"
   },
   "PAGES": {
-    "HOME": "Home",
-    "CLIENTS": "Clients",
-    "CONTACTS": "Contacts",
-    "ANIMATIONS": "Animations"
+    "HOME": {
+      "TITLE": "Home"
+    },
+    "CLIENTS": {
+      "TITLE": "Clients"
+    },
+    "CONTACTS": {
+      "TITLE": "Contacts"
+    },
+    "ANIMATIONS": {
+      "TITLE": "Animations"
+    }
   },
   "NAV": {
     "BRAND": "Brand"
+  },
+  "BUTTONS": {
+    "ADD_NEW": "Add new",
+    "EDIT": "Edit",
+    "REMOVE": "Remove",
+    "UPDATE": "Update",
+    "CANCEL": "Cancel"
   },
   "TITLES": {},
   "TABLE_HEADERS": {
@@ -23,7 +38,7 @@
     "EMAIL": "Email",
     "PHONE_NUMBER": "Phone number",
     "LAST_SEEN_DATE": "Last seen date",
-    "LAST_TRANSACTION": "Last transaction",
+    "LAST_TRANSACTION_DATE": "Last transaction date",
     "ACCOUNT": "Account",
     "STATUS": "Status"
   }

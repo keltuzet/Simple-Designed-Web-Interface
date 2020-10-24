@@ -1,15 +1,18 @@
 <nav class="nav-bar">
   <div class="container">
-    <h1>Brand</h1>
+    <h1>{{ "NAV.BRAND" | translate }}</h1>
     <div class="link-group">
       <ul class="links">
         <li *ngFor="let link of links">
           <a [routerLink]="link.path">
-            <fa-icon [icon]="link.icon"></fa-icon>{{ link.text }}
+            <fa-icon [icon]="link.icon"></fa-icon
+            >{{ formatLinkTitle(link.text) | translate }}
           </a>
         </li>
       </ul>
     </div>
-    <app-i18n-select></app-i18n-select>
+    <div class="nav-right-column">
+      <app-i18n-select></app-i18n-select>
+    </div>
   </div>
 </nav>

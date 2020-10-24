@@ -16,22 +16,22 @@ export class HeaderComponent implements OnInit {
       {
         icon: Icons.home,
         path: ROUTE.home,
-        text: 'Home'
+        text: 'HOME',
       },
       {
         icon: Icons.clients,
         path: ROUTE.clients,
-        text: 'Clients'
+        text: 'CLIENTS',
       },
       {
         icon: Icons.contacts,
         path: ROUTE.contacts,
-        text: 'Contacts'
+        text: 'CONTACTS',
       },
       {
         icon: Icons.animations,
         path: ROUTE.animations,
-        text: 'Animations'
+        text: 'ANIMATIONS',
       },
     ];
   }
@@ -39,4 +39,8 @@ export class HeaderComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  formatLinkTitle(title: string): string {
+    return `PAGES.${title}.TITLE`;
+  }
 }

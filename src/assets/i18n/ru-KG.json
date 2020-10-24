@@ -3,13 +3,28 @@
     "PAGE": "Страница"
   },
   "PAGES": {
-    "HOME": "Главная",
-    "CLIENTS": "Клиенты",
-    "CONTACTS": "Контакты",
-    "ANIMATIONS": "Анимации"
+    "HOME": {
+      "TITLE": "Главная"
+    },
+    "CLIENTS": {
+      "TITLE": "Клиенты"
+    },
+    "CONTACTS": {
+      "TITLE": "Контакты"
+    },
+    "ANIMATIONS": {
+      "TITLE": "Анимации"
+    }
   },
   "NAV": {
     "BRAND": "Логотип"
+  },
+  "BUTTONS": {
+    "ADD_NEW": "Добавить новое",
+    "EDIT": "Редактировать",
+    "REMOVE": "Удалить",
+    "UPDATE": "Обновить",
+    "CANCEL": "Отменить"
   },
   "TITLES": {},
   "TABLE_HEADERS": {
