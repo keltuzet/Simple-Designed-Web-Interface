@@ -3,11 +3,11 @@
     (blur)="handleInputBlur()" [disabled]="disabled" [placeholder]="placeholder" [ngClass]="{'control-focus': focused}"
     type="number">
   <span class="arrow-wrap no-user-select">
-    <span (click)="handleUpdateValue(value + 1)" class="arrow-up">
+    <button (click)="handleUpdateValue(value + 1)" [disabled]="disabled" class="arrow-up">
       <fa-icon [icon]="icons.arrowUp"></fa-icon>
-    </span>
-    <span (click)="handleUpdateValue(value - 1)" class="arrow-down">
+    </button>
+    <button (click)="handleUpdateValue(value - 1)" [disabled]="disabled" class="arrow-down">
       <fa-icon [icon]="icons.arrowDown"></fa-icon>
-    </span>
+    </button>
   </span>
 </div>

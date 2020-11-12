@@ -17,6 +17,11 @@ const routes: Routes = [
   { path: ROUTE.client_not_found, component: ClientNotFoundComponent },
   { path: ROUTE.contacts, component: ContactsComponent },
   { path: ROUTE.animations, component: AnimationsComponent },
+  {
+    path: ROUTE.weather,
+    loadChildren: () =>
+      import('@pages/weather/weather.module').then((m) => m.WeatherModule),
+  },
   { path: ROUTE.not_found, component: NotFoundComponent },
 ];
 

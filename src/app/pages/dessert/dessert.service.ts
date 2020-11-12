@@ -15,7 +15,7 @@ export class DessertService extends SpinnerService {
   }
 
   getDesserts(): Observable<INutritionalValueViewModel[]> {
-    return this.skipSpinner(
+    return this.skipThroughSpinnerWrap(
       of(this.stage).pipe(delay(0)),
       SPINNER_NAMES.DESSERT_TABLE
     );

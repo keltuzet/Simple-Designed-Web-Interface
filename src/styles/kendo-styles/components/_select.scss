@@ -56,6 +56,12 @@
       padding: 0.25rem 0.5rem;
       cursor: pointer;
 
+      div {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       &:hover {
         color: #656565;
         background-color: #ededed;

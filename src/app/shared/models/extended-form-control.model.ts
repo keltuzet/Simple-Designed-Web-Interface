@@ -5,10 +5,12 @@ import {
   AsyncValidatorFn,
 } from '@angular/forms';
 import { validatorErrorHandler } from '@shared/common';
-import { Observable } from 'rxjs';
+import { merge, Observable, Subject, Subscription } from 'rxjs';
 
 export class ExtendedFormControl extends FormControl {
   errorMessage: string;
+  touchedChanges: Subject<void> = new Subject<void>();
+  validityChange: Observable<void>;
 
   constructor(
     formState?: any,
@@ -20,6 +22,7 @@ export class ExtendedFormControl extends FormControl {
     asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
   ) {
     super(formState, validatorOrOpts, asyncValidator);
+    this.validityChange = merge(this.statusChanges);
     this.statusChanges.subscribe((status) => {
       if (this.invalid) {
         this.errorMessage = validatorErrorHandler(this.errors);
@@ -27,5 +30,10 @@ export class ExtendedFormControl extends FormControl {
         this.errorMessage = '';
       }
     });
+  }
+
+  markAsTouched(): void {
+    this.updateValueAndValidity();
+    this.touchedChanges.next();
   }
 }

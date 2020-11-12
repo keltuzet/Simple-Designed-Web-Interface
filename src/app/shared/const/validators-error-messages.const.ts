@@ -2,26 +2,31 @@ import { BuiltInValidatorErrors, CustomValidatorErrors } from '@shared/enums';
 import { ValidatorErrorOptionModel } from '@shared/models';
 
 export const ValidatorsErrorMessages = {
-  [BuiltInValidatorErrors.REQUIRED](invalid: boolean): string {
+  [BuiltInValidatorErrors.Required](invalid: boolean): string {
     return 'This field is required!';
   },
-  [BuiltInValidatorErrors.EMAIL](invalid: boolean): string {
+  [BuiltInValidatorErrors.Email](invalid: boolean): string {
     return 'Invalid email address!';
   },
-  [CustomValidatorErrors.EMAIL](option: ValidatorErrorOptionModel): string {
+  [CustomValidatorErrors.Email](option: ValidatorErrorOptionModel): string {
     return 'Invalid email address!';
   },
-  [CustomValidatorErrors.FORBIDDEN_WORDS](
+  [CustomValidatorErrors.ForbiddenWords](
     option: ValidatorErrorOptionModel
   ): string {
     const words = option?.forbiddenWords.map((word) => `"${word}"`).join(', ');
     return `The words: ${words} are forbidden!`;
   },
-  [CustomValidatorErrors.PERSON_NAME](
+  [CustomValidatorErrors.PersonName](
     option: ValidatorErrorOptionModel
   ): string {
     return option.isMiddleNameRequired
-      ? 'Write your first name, last name, middle name'
-      : 'write your first name, last name';
+      ? 'Write your first name, last name, middle name!'
+      : 'write your first name, last name!';
+  },
+  [CustomValidatorErrors.MinDate](
+    option: ValidatorErrorOptionModel
+  ): string {
+    return `The date must be less than ${option.minDate || 'current'}current!`;
   },
 };

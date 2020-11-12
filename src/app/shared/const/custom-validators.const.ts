@@ -1,11 +1,14 @@
+import { DatePipe } from '@angular/common';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 import { CustomValidatorErrors } from '@shared/enums';
 import { ValidatorErrorOptionModel } from '@shared/models';
+import { isString, isDate } from 'lodash';
 
 export interface CustomValidatorModel {
   email: ValidatorFn;
   forbiddenWords: (words: string[]) => ValidatorFn;
   personName: (isMiddleNameRequired?: boolean) => ValidatorFn;
+  minDate: (date: string | Date) => ValidatorFn;
 }
 
 export const CustomValidator: CustomValidatorModel = {
@@ -16,7 +19,7 @@ export const CustomValidator: CustomValidatorModel = {
     ): { [key: string]: ValidatorErrorOptionModel } | null => {
       return !control.value || emailRegExp.test(control.value)
         ? null
-        : { [CustomValidatorErrors.EMAIL]: { control } };
+        : { [CustomValidatorErrors.Email]: { control } };
     };
   },
   forbiddenWords(words: string[]): ValidatorFn {
@@ -29,7 +32,7 @@ export const CustomValidator: CustomValidatorModel = {
       return !control.value || !foundWords.length
         ? null
         : {
-            [CustomValidatorErrors.FORBIDDEN_WORDS]: {
+            [CustomValidatorErrors.ForbiddenWords]: {
               control,
               forbiddenWords: words,
             },
@@ -38,14 +41,39 @@ export const CustomValidator: CustomValidatorModel = {
   },
   personName(isMiddleNameRequired?: boolean): ValidatorFn {
     const nameRegExp = isMiddleNameRequired
-      ? /^[a-zа-я]+( |,|, )[a-zа-я]+\1[a-zа-я]+$/i
-      : /^[a-zа-я]+( |,|, )[a-zа-я]+$/i;
+      ? /^[a-zа-я]+( |,|, )[a-zа-я]+\1[a-zа-я]+\s*$/i
+      : /^[a-zа-я]+( |,|, )[a-zа-я]+(\1[a-zа-я]+)?\s*$/i;
     return (
       control: AbstractControl
     ): { [key: string]: ValidatorErrorOptionModel } | null => {
       return !control.value || nameRegExp.test(control.value)
         ? null
-        : { [CustomValidatorErrors.PERSON_NAME]: { control, isMiddleNameRequired } };
+        : {
+            [CustomValidatorErrors.PersonName]: {
+              control,
+              isMiddleNameRequired,
+            },
+          };
+    };
+  },
+  minDate(minDate?: Date): ValidatorFn {
+    return (
+      control: AbstractControl
+    ): { [key: string]: ValidatorErrorOptionModel } | null => {
+      if (!control.value) {
+        return null;
+      }
+      const dateValue: Date = isString(control.value)
+        ? new Date(control.value)
+        : control.value;
+      return dateValue.valueOf() <= (minDate?.valueOf() || Date.now().valueOf())
+        ? null
+        : {
+            [CustomValidatorErrors.MinDate]: {
+              control,
+              minDate: minDate.toString(),
+            },
+          };
     };
   },
 };

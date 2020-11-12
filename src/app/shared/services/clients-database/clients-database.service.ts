@@ -1,35 +1,58 @@
 import { Injectable, Injector } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { delay, map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { delay, map, mapTo } from 'rxjs/operators';
+import { NgxIndexedDBService } from 'ngx-indexed-db';
 
-import { ClientsData } from '@pages/clients/data';
+import { Pagination } from '@shared/models';
+import { SPINNER_NAMES } from '@shared/const';
+import { ClientsData } from '@shared/data';
 import {
   ClientBaseModel,
-  ClientBaseResponseModel,
-} from '@pages/clients/model/client-base.model';
-import { SPINNER_NAMES } from '@shared/const';
+  ClientIdentifiableModel,
+  ClientViewModel,
+} from '@shared/models/client-base.model';
+
 import { SpinnerService } from '../spinner';
+import { CLIENTS_STORE_NAME } from './consts';
 
 @Injectable()
 export class ClientsDatabaseService extends SpinnerService {
-  private clients: ClientBaseResponseModel[] = ClientsData;
-  get currentFreeId(): number {
-    return (
-      Math.max(
-        ...this.clients.map((client: ClientBaseResponseModel) => client.id)
-      ) + 1
-    );
-  }
+  private clients: ClientIdentifiableModel[] = [];
+  private clientsStoreName = CLIENTS_STORE_NAME;
+  private clientsSamplesForInsurance = ClientsData;
 
-  constructor(injector: Injector) {
+  constructor(
+    injector: Injector,
+    private dbService: NgxIndexedDBService<ClientBaseModel>
+  ) {
     super(injector);
+    this.fillStoreWithSample();
   }
 
-  getClients(): Observable<ClientBaseModel[]> {
-    return this.skipSpinner(
-      of(ClientsData as ClientBaseModel[]).pipe(
+  getClients(pagination: Pagination): Observable<ClientViewModel[]> {
+    return this.skipThroughSpinnerWrap(
+      this.dbService.getAll(this.clientsStoreName).pipe(
         delay(400),
-        map((clients) => clients.map((client) => new ClientBaseModel(client)))
+        map((clients: ClientIdentifiableModel[]) => {
+          const expectedInitialRange =
+            (pagination.page - 1) * pagination.pageSize;
+          const expectedEndRange = pagination.page * pagination.pageSize;
+          let actualInitialRange: number;
+          let actualEndRange: number;
+          if (expectedInitialRange < clients.length) {
+            actualInitialRange = expectedInitialRange;
+            actualEndRange =
+              expectedEndRange <= clients.length
+                ? expectedEndRange
+                : clients.length;
+          } else {
+            actualInitialRange = 0;
+            actualEndRange = 0;
+          }
+          return clients
+            .slice(actualInitialRange, actualEndRange)
+            .map((client) => new ClientViewModel(client));
+        })
       ),
       SPINNER_NAMES.CLIENTS_BASE_TABLE
     );
@@ -40,36 +63,47 @@ export class ClientsDatabaseService extends SpinnerService {
     spinnerName?: string
   ): Observable<ClientBaseModel | null> {
     let client: any = this.clients.find((cl) => cl.id === id);
-    client = client ? new ClientBaseModel(client) : null;
-    return this.wrappSpinner(of(client).pipe(delay(1200)), spinnerName);
+    client = client ? new ClientViewModel(client) : null;
+    return this.wrapStreamWithSpinner(of(client).pipe(delay(1200)), spinnerName);
   }
 
   isClientExist(id: number): boolean {
     return this.clients.findIndex((client) => client.id === id) !== -1;
   }
 
-  addClient(client: ClientBaseModel): Observable<number> {
-    client.id = this.currentFreeId;
-    this.clients.push(new ClientBaseModel(client));
-    return of(this.currentFreeId);
+  addClient(client: ClientBaseModel, loaderName?: string): Observable<number> {
+    return this.wrapStreamWithSpinner<number>(
+      this.dbService.add(this.clientsStoreName, client).pipe(delay(400)),
+      loaderName
+    );
   }
 
-  editClient(client: ClientBaseModel): Observable<void> {
-    const index = this.clients.findIndex((cl) => cl.id === client.id);
-    if (index !== -1) {
-      this.clients[index] = new ClientBaseModel(client);
-    }
-
-    return of(null);
+  editClient(client: ClientIdentifiableModel, loaderName?: string): Observable<void> {
+    return this.wrapStreamWithSpinner<void>(
+      this.dbService
+        .update(this.clientsStoreName, client)
+        .pipe(delay(400), mapTo(null)),
+      loaderName
+    );
   }
 
-  deleteClient(id: number): Observable<void> {
-    const index = this.clients.findIndex((cl) => cl.id === id);
-    if (index !== -1) {
-      this.clients.splice(index, 1);
-      console.log(this.clients);
-    }
+  removeClient(id: number, loaderName?: string): Observable<void> {
+    return this.wrapStreamWithSpinner<void>(
+      this.dbService
+        .delete(this.clientsStoreName, id)
+        .pipe(delay(400), mapTo(null)),
+      loaderName
+    );
+  }
 
-    return of(null);
+  private fillStoreWithSample(): void {
+    const streams$: Observable<number>[] = this.clientsSamplesForInsurance.map(
+      (client) => {
+        return this.dbService.add(this.clientsStoreName, client);
+      }
+    );
+    forkJoin(streams$).subscribe((date) => {
+      console.log('The samples successfully saved!');
+    });
   }
 }

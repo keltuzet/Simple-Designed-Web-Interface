@@ -1,9 +1,26 @@
-import { Component, OnInit, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { DATE_MASK, DATE_TIME_MASK, PHONE_NUMBER_MASK } from '@shared/const';
+import {
+  Component,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import {
+  PHONE_NUMBER_MASK,
+  SPINNER_NAMES,
+} from '@shared/const';
 import { Observable, Subscription } from 'rxjs';
 
-import { ClientBaseModel } from './model/client-base.model';
-import { ClientTableColumns } from './consts';
+import {
+  ClientViewModel,
+  ClientBaseModel,
+  parseClientForm,
+} from '@shared/models';
+import {
+  ClientTableColumns,
+  CLIENT_FROM,
+  STATUS_OPTIONS,
+} from './consts';
 import { Router } from '@angular/router';
 import { ClientsDatabaseService } from '@shared/services';
 import { Validators } from '@angular/forms';
@@ -15,45 +32,20 @@ import { ExtendedFormControl, ExtendedFormGroup } from '@shared/models';
   styleUrls: ['./clients.component.scss'],
 })
 export class ClientsComponent implements OnInit {
-  clients$: Observable<ClientBaseModel[]>;
-  clients: ClientBaseModel[];
+  clients$: Observable<ClientViewModel[]>;
+  clients: ClientViewModel[];
   $subscription: Subscription[] = [];
   clientsColumn = ClientTableColumns;
   phoneNumberMask = PHONE_NUMBER_MASK;
-  dateMask = DATE_MASK;
-  dateTimeMask = DATE_TIME_MASK;
-  clientCreateForm = new ExtendedFormGroup({
-    fullName: new ExtendedFormControl(null, Validators.required),
-    dob: new ExtendedFormControl(null),
-    email: new ExtendedFormControl(null, Validators.email),
-    phoneNumber: new ExtendedFormControl(null),
-    lastSeenDate: new ExtendedFormControl(),
-    lastTransaction: new ExtendedFormControl(),
-    account: new ExtendedFormControl(),
-    status: new ExtendedFormControl(),
-  });
-  clientEditForm = new ExtendedFormGroup({
-    fullName: new ExtendedFormControl(null, Validators.required),
-    DOB: new ExtendedFormControl(null),
-    email: new ExtendedFormControl(null, Validators.email),
-    phoneNumber: new ExtendedFormControl(null),
-    lastSeenDate: new ExtendedFormControl({value: null, disabled: true}),
-    lastTransaction: new ExtendedFormControl({value: null, disabled: true}),
-    account: new ExtendedFormControl({value: null}),
-    status: new ExtendedFormControl(),
-  });
-  // <td>{{ client.getFullName }}</td>
-  // <td>{{ client.DOB }}</td>
-  // <td>{{ client.email }}</td>
-  // <td>{{ client.lastSeenDate }}</td>
-  // <td>{{ client.lastTransaction }}</td>
-  // <td>{{ client.account }}</td>
-  // <td>{{ client.status }}</td>
+  clientForm = CLIENT_FROM;
+  statusOptions = STATUS_OPTIONS;
   editRowIndex: number;
   isCreatingClient = false;
 
-  @ViewChild('clientCreateCnt', {read: ViewContainerRef}) clientCreateCnt: ViewContainerRef;
-  @ViewChild('rowCreateTpl', {read: TemplateRef}) clientCreateTpl: TemplateRef<any>;
+  @ViewChild('clientCreateCnt', { read: ViewContainerRef })
+  clientCreateCnt: ViewContainerRef;
+  @ViewChild('rowFormTpl', { read: TemplateRef })
+  clientCreateTpl: TemplateRef<any>;
 
   constructor(
     private clientsDatabaseService: ClientsDatabaseService,
@@ -65,7 +57,10 @@ export class ClientsComponent implements OnInit {
   }
 
   getClients(): void {
-    this.clients$ = this.clientsDatabaseService.getClients();
+    this.clients$ = this.clientsDatabaseService.getClients({
+      page: 1,
+      pageSize: 10,
+    });
     this.$subscription.push(
       this.clients$.subscribe((clients) => {
         this.clients = clients;
@@ -77,20 +72,25 @@ export class ClientsComponent implements OnInit {
     this.router.navigate(['/client', `${id}`]);
   }
 
-  handleShowEditModel(index: number, client: ClientBaseModel): void {
+  handleShowEditModel(index: number, client: ClientViewModel): void {
     this.editRowIndex = index;
-    this.clientEditForm.patchValue({...client, fullName: client.fullName});
+    this.clientForm.reset();
+    this.clientForm.patchValue({ ...client, fullName: client.fullName });
   }
 
-  handleUpdateRow(client: ClientBaseModel): void {
-    this.clientEditForm.markAllAsTouched();
-    if (this.clientEditForm.invalid) {
+  handleUpdateRow(client: ClientViewModel): void {
+    this.clientForm.markAllAsTouched();
+    if (this.clientForm.invalid) {
       return;
     }
-    this.clientsDatabaseService.editClient({...this.clientEditForm.getRawValue(), id: client.id}).subscribe(() => {
-      this.clients = null;
-      this.getClients();
-    });
+    this.clientsDatabaseService
+      .editClient(
+        { ...parseClientForm(this.clientForm.getRawValue()), id: client.id },
+        SPINNER_NAMES.CLIENTS_BASE_TABLE
+      )
+      .subscribe(() => {
+        this.getClients();
+      });
     this.editRowIndex = null;
   }
 
@@ -99,29 +99,37 @@ export class ClientsComponent implements OnInit {
   }
 
   handleDeleteDessert(id: number): void {
-    this.clientsDatabaseService.deleteClient(id).subscribe(() => {
-      this.clients = null;
-      this.getClients();
-    });
+    this.clientsDatabaseService
+      .removeClient(id, SPINNER_NAMES.CLIENTS_BASE_TABLE)
+      .subscribe(() => {
+        this.getClients();
+      });
   }
 
   handleAddClient(): void {
-    const clientCreateRef = this.clientCreateCnt.createEmbeddedView(this.clientCreateTpl, {});
+    const clientCreateRef = this.clientCreateCnt.createEmbeddedView(
+      this.clientCreateTpl, {
+        isCreate: true
+      }
+    );
     this.clientCreateCnt.insert(clientCreateRef);
     this.isCreatingClient = true;
+    this.clientForm.reset();
   }
 
   handleCreate(): void {
-    this.clientCreateForm.markAllAsTouched();
-    if (this.clientCreateForm.invalid) {
+    this.clientForm.markAllAsTouched();
+    if (this.clientForm.invalid) {
       return;
     }
     this.clientCreateCnt.remove(0);
-    const formValue: ClientBaseModel = this.clientCreateForm.getRawValue();
-    this.clientsDatabaseService.addClient(formValue).subscribe(() => {
-      this.clients = null;
-      this.getClients();
-    });
+    const formValue: ClientBaseModel = parseClientForm(this.clientForm.getRawValue());
+    this.clientsDatabaseService
+      .addClient(formValue, SPINNER_NAMES.CLIENTS_BASE_TABLE)
+      .subscribe(() => {
+        this.clients = null;
+        this.getClients();
+      });
     this.isCreatingClient = false;
   }
 

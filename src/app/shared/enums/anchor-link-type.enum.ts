@@ -1,4 +1,4 @@
 export enum AnchorLinkType {
-  MAIL = 'mail',
-  TEL = 'tel',
+  Mail = 'mail',
+  Tel = 'tel',
 }

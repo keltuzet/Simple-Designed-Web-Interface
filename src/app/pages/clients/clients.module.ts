@@ -6,14 +6,21 @@ import {
   NumericInputModule,
   SpinnerWrapperModule,
   ViewerModule,
+  DateControlsModule,
+  SelectModule,
 } from '@shared/components';
-import { AnchorLinkFormatModule } from '@shared/pipes';
+import {
+  AnchorLinkFormatModule,
+  ClientStatusModule,
+  LocalDateModule,
+} from '@shared/pipes';
 import { SharedFormsModule, SharedModule } from '@shared/modules';
 import { ClientsDatabaseModule } from '@shared/services';
 import { ClientsComponent } from './clients.component';
+import { ClientStatusComponent } from './components';
 
 @NgModule({
-  declarations: [ClientsComponent],
+  declarations: [ClientsComponent, ClientStatusComponent],
   imports: [
     SharedModule,
     SharedFormsModule,
@@ -25,8 +32,11 @@ import { ClientsComponent } from './clients.component';
     RouterModule,
     ClientsDatabaseModule,
     AnchorLinkFormatModule,
+    LocalDateModule,
+    ClientStatusModule,
+    SelectModule,
+    DateControlsModule
   ],
-  exports: [ClientsComponent],
   providers: [],
 })
 export class ClientsModule {}

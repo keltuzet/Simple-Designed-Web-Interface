@@ -7,15 +7,18 @@ import { Injector } from '@angular/core';
 export class SpinnerService {
   private spinner: NgxSpinnerService;
 
-  constructor(private injector: Injector) {
-    this.spinner = this.injector.get(NgxSpinnerService);
+  constructor(injector: Injector) {
+    this.spinner = injector.get(NgxSpinnerService);
   }
 
-  protected wrappSpinner<T>(stream: Observable<T>, spinnerName: string) {
-    return spinnerName ? this.skipSpinner(stream, spinnerName) : stream;
+  protected wrapStreamWithSpinner<T>(
+    stream: Observable<T>,
+    spinnerName: string
+  ): Observable<T> {
+    return spinnerName ? this.skipThroughSpinnerWrap(stream, spinnerName) : stream;
   }
 
-  protected skipSpinner<T>(
+  protected skipThroughSpinnerWrap<T>(
     stream: Observable<T>,
     spinnerName: string,
     options?: Spinner

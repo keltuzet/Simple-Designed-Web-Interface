@@ -3,6 +3,7 @@ import {
   faUsers,
   faAddressBook,
   faCrown,
+  faCloud,
 } from '@fortawesome/free-solid-svg-icons';
 
 export const Icons = {
@@ -10,4 +11,5 @@ export const Icons = {
   clients: faUsers,
   contacts: faAddressBook,
   animations: faCrown,
+  weather: faCloud,
 };

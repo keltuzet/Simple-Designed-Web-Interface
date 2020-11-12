@@ -6,5 +6,6 @@ export const ROUTE = Object.freeze({
   home: 'desserts',
   contacts: 'contacts',
   animations: 'animations',
+  weather: 'weather',
   not_found: '**',
 });

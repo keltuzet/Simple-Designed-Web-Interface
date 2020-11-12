@@ -69,6 +69,7 @@ export class SelectComponent
   @Input() panelWidth: string;
   @Input() onHover: boolean;
   @Input() set value(val: any) {
+    this.onChange(val);
     this.writeValue(val);
   }
   get value(): any {
@@ -93,7 +94,7 @@ export class SelectComponent
       this.$subscriptions.push(
         option.valueChange.subscribe((optionValue: OptionModel) => {
           if (!isNil(optionValue)) {
-            this._value = optionValue.value;
+            this.value = optionValue.value;
             this.viewValue = optionValue.viewValue;
             this.evaluateWidth();
             this.valueChange.emit(this.value);
@@ -145,6 +146,7 @@ export class SelectComponent
         this.options.forEach((option) => {
           if (option.value === outsideValue) {
             this._value = outsideValue;
+            this.onChange(outsideValue);
             this.viewValue = option.viewValue;
             this.evaluateWidth();
           }

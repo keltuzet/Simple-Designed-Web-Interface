@@ -1,0 +1,2 @@
+<input (ngModelChange)="handleUpdateValue($event)" (blur)="hanldeBlurInp()" [ngModel]="UIvalue" [dropSpecialCharacters]="false"
+  [mask]="dateTime ? dateTimeMask : dateMask" [disabled]="disabled" [placeholder]="placeholder" type="text" class="sdwi-input" />

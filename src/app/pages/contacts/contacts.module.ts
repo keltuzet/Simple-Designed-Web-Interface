@@ -7,8 +7,10 @@ import {
   FieldModule,
   NumericInputModule,
   SelectModule,
+  DateControlsModule,
+  ViewerModule,
 } from '@shared/components';
-import { SharedFormsModule } from '@shared/modules';
+import { SharedFormsModule, SharedModule } from '@shared/modules';
 
 import { ContactsComponent } from './contacts.component';
 import { LoginComponent } from './components';
@@ -33,7 +35,10 @@ import { NgxMaskModule } from 'ngx-mask';
     HeaderModule,
     ChildModule,
     SelectModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    DateControlsModule,
+    ViewerModule,
+    SharedModule
   ],
   exports: [],
   providers: [],

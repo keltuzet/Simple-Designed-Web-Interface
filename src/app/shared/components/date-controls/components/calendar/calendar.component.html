@@ -1,0 +1,146 @@
+<div class="calendar">
+  <div class="calendar-navigation">
+    <span class="calendar-navigation-highlight"></span>
+    <div (scroll)="handleScrollNav($event)" class="calendar-navigation-virtualization">
+      <ul [ngStyle]="{'transform': navTranslate}" class="calendar-navigation-list">
+        <li *ngFor="let navMonth of navMonths; let i=index;">
+          <span [ngClass]="{'calendar-navigation-marker': navMonth.isYear}">{{navMonth.title | translate | titlecase }}</span>
+        </li>
+      </ul>
+      <div style="height: 67472px;" class="scrollable-placeholder">
+
+      </div>
+    </div>
+  </div>
+
+  <div class="calendar-view">
+    <div class="calendar-header">
+      <span class="calendar-header__title">January 2021</span><span class="calendar-header__today">{{ 'today' | uppercase }}</span></div>
+    <div class="calendar-weekdays">
+      <div class="calendar-weekday">su</div>
+      <div class="calendar-weekday">mo</div>
+      <div class="calendar-weekday">tu</div>
+      <div class="calendar-weekday">we</div>
+      <div class="calendar-weekday">th</div>
+      <div class="calendar-weekday">fr</div>
+      <div class="calendar-weekday">sa</div>
+    </div>
+    <div class="calendar-days-table">
+      <div class="calendar-days-row">
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">1</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">2</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">3</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">4</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">5</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">6</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">7</span>
+        </div>
+      </div>
+      <div class="calendar-days-row">
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">11</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">22</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">33</span>
+        </div>
+        <div class="calendar-days-cell today">
+          <span class="calendar-day-link">44</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">55</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">66</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">77</span>
+        </div>
+      </div>
+      <div class="calendar-days-row">
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">1</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">2</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">3</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">4</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">5</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">6</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">7</span>
+        </div>
+      </div>
+      <div class="calendar-days-row">
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">1</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">2</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">3</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">4</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">5</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">6</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">7</span>
+        </div>
+      </div>
+      <div class="calendar-days-row">
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">1</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">2</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">3</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">4</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">5</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">6</span>
+        </div>
+        <div class="calendar-days-cell">
+          <span class="calendar-day-link">7</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

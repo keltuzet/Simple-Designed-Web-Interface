@@ -1,41 +1,3 @@
-<!-- <h3>Contact component</h3>
-<button (click)="handleAdd()" class="sdwi-button">add user</button>
-<button (click)="handleShow()" class="sdwi-button">show users</button>
-<hr>
-<app-child></app-child> -->
-
-
-<!-- <button (click)="addBook()" class="sdwi-button">add book</button> -->
-<!-- <div class="card light-border" #free appCompleted></div>
-
-<ng-template #baseFilterOperatorsTemplate >
-  <div class="base-filter-operators">
-    <button class="sdwi-button">
-      +
-    </button>
-    <button  class="sdwi-button">
-      -
-    </button>
-  </div>
-</ng-template>
-
-<ng-template #view></ng-template>
-
-<ng-template #book let-title="title" let-description="description">
-  <div class="card">
-    <h3>{{title}}</h3>
-    <p>{{description}}</p>
-    <button class="sdwi-button">Add book</button>
-  </div>
-</ng-template> -->
-
-<!-- <ng-container #view></ng-container> -->
-
-
-
-<!-- <ng-container><div>This is div!</div></ng-container> -->
-
-
 <form class="swdi-form" [formGroup]="formGroup">
   <app-form-field>
     <app-field-label>First name</app-field-label>
@@ -67,7 +29,6 @@
     <app-field-label>Comment</app-field-label>
     <input mask="M-M" [showMaskTyped]="true" [patterns]="customPattern" #controlAnchor
       [formControl]="formGroup.controls.comment" class="sdwi-input" type="text">
-    <!--formControlName="comment"-->
     <app-field-error-label></app-field-error-label>
   </app-form-field>
 
@@ -85,9 +46,31 @@
     <app-field-error-label></app-field-error-label>
   </app-form-field>
 
-  <!-- <app-form-field>
-    <app-field-label>Count</app-field-label>
-    <input [max]="4" #controlAnchor formControlName="count" type="number">
+  <app-form-field>
+    <app-field-label>Date</app-field-label>
+    <app-date-input #controlAnchor formControlName="date" [placeholder]="'PLACEHOLDER.DATE' | translate">
+    </app-date-input>
     <app-field-error-label></app-field-error-label>
-  </app-form-field> -->
+  </app-form-field>
+
+
 </form>
+
+<app-form-field>
+  <app-field-label>Time</app-field-label>
+  <app-date-input #controlAnchor [formControl]="formGroup.controls.time" dateTime="true"
+    [placeholder]="'PLACEHOLDER.DATE_TIME' | translate">
+  </app-date-input>
+  <app-field-error-label></app-field-error-label>
+</app-form-field>
+
+<!-- <app-viewer [title]="'Calendar'" >
+<app-calendar></app-calendar>
+</app-viewer> -->
+
+
+<!-- <app-form-field>
+<app-field-label>Count</app-field-label>
+<input [max]="4" #controlAnchor formControlName="count" type="number">
+<app-field-error-label></app-field-error-label>
+</app-form-field> -->

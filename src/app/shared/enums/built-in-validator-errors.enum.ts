@@ -1,4 +1,4 @@
 export enum BuiltInValidatorErrors {
-  EMAIL = 'email',
-  REQUIRED = 'required',
+  Email = 'email',
+  Required = 'required',
 }

@@ -33,6 +33,11 @@ export class HeaderComponent implements OnInit {
         path: ROUTE.animations,
         text: 'ANIMATIONS',
       },
+      {
+        icon: Icons.weather,
+        path: ROUTE.weather,
+        text: 'WEATHER',
+      },
     ];
   }
 

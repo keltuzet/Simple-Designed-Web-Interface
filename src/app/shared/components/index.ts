@@ -1,3 +1,4 @@
+export * from './date-controls';
 export * from './empty-table-state';
 export * from './header';
 export * from './field';

@@ -5,11 +5,11 @@ import { AnchorLinkType } from '@shared/enums/anchor-link-type.enum';
   name: 'anchorLinkFormat',
 })
 export class AnchorLinkFormatPipe implements PipeTransform {
-  transform(value: string, linkType: AnchorLinkType = AnchorLinkType.MAIL): unknown {
+  transform(value: string, linkType: AnchorLinkType = AnchorLinkType.Mail): unknown {
     switch (linkType) {
-      case AnchorLinkType.MAIL:
+      case AnchorLinkType.Mail:
         return `mailto:${value}`;
-      case AnchorLinkType.TEL:
+      case AnchorLinkType.Tel:
       default:
         return `tel:${value}`;
     }

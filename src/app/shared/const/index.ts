@@ -3,6 +3,7 @@ export * from './custom-validators.const';
 export * from './date-mask.const';
 export * from './date-time-mask.const';
 export * from './desserts-table-columns.const';
+export * from './i18n.const';
 export * from './language.const';
 export * from './phone-number-mask.const';
 export * from './route.const';

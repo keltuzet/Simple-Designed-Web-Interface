@@ -26,14 +26,14 @@ export class NumericInputComponent implements ControlValueAccessor {
     return isUndefined(this.placholderValue) ? '' : this.placholderValue;
   }
   private placholderValue: string;
-  fromUI: boolean;
-  icons: IconModel = {
+  private fromUI: boolean;
+  public icons: IconModel = {
     arrowUp: faCaretUp,
     arrowDown: faCaretDown,
   };
-  disabled = false;
-  value = null;
-  focused: boolean;
+  public disabled = false;
+  public value = null;
+  public focused: boolean;
   private onChange = (value: any) => {};
   private onTouched = () => {};
 

@@ -4,21 +4,23 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
 
 import { LanguageOption, LanguageConfig } from './i18n.model';
+import { initializeLocale } from '@shared/common';
+import { EN } from '@shared/const';
 
 export const LANG_CONFIG = new InjectionToken<LanguageConfig>('LANG_CONFIG');
 
-/**
- * Language service for change language in the application
- */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class I18nService {
-  // tslint:disable-next-line: variable-name
   private _valueChanges: Subject<string> = new Subject();
 
   get currentLanguage(): LanguageOption {
-    return this.availableLanguages.find((lang) => lang.value === (this.translate.currentLang || this.translate.defaultLang));
+    return this.availableLanguages.find(
+      (lang) =>
+        lang.value ===
+        (this.translate.currentLang || this.translate.defaultLang)
+    );
   }
 
   get availableLanguages(): LanguageOption[] {
@@ -38,11 +40,22 @@ export class I18nService {
   initLang(): void {
     const { languages, storeKey, defaultLang } = this.langConfig;
 
+    languages.forEach((lang) => {
+      if (lang === EN) {
+        return;
+      }
+      initializeLocale(lang);
+    });
+
     this.translate.addLangs(languages);
     const browserLang = localStorage.getItem(storeKey);
 
     if (browserLang) {
-      this.translate.use(browserLang.match(new RegExp(languages.join('|'))) ? browserLang : defaultLang);
+      this.translate.use(
+        browserLang.match(new RegExp(languages.join('|')))
+          ? browserLang
+          : defaultLang
+      );
     } else {
       localStorage.setItem(storeKey, defaultLang);
       this.translate.setDefaultLang(defaultLang);

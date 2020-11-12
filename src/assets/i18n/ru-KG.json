@@ -1,6 +1,9 @@
 {
   "COMMON": {
-    "PAGE": "Страница"
+    "PAGE": "Страница",
+    "REMOVED": "Удалено",
+    "BLOCKED": "Заблокировано",
+    "ACTIVE": "Активный"
   },
   "PAGES": {
     "HOME": {
@@ -14,6 +17,9 @@
     },
     "ANIMATIONS": {
       "TITLE": "Анимации"
+    },
+    "WEATHER": {
+      "TITLE": "Погода"
     }
   },
   "NAV": {
@@ -25,6 +31,10 @@
     "REMOVE": "Удалить",
     "UPDATE": "Обновить",
     "CANCEL": "Отменить"
+  },
+  "PLACEHOLDER": {
+    "DATE": "день/месяц/год",
+    "DATE_TIME": "день/месяц/год час:минута"
   },
   "TITLES": {},
   "TABLE_HEADERS": {
@@ -41,5 +51,23 @@
     "LAST_TRANSACTION_DATE": "Дата последней транзакции",
     "ACCOUNT": "Счет",
     "STATUS": "Статус"
+  },
+  "CALENDAR": {
+    "MONTHS": {
+      "SHORT": {
+        "JAN": "янв",
+        "FEB": "фев",
+        "MAR": "мрт",
+        "APR": "апр",
+        "MAY": "май",
+        "JUN": "июн",
+        "JUL": "июл",
+        "AUG": "авг",
+        "SEP": "сент",
+        "OCT": "окт",
+        "NOV": "нояб",
+        "DEC": "дек"
+      }
+    }
   }
 }

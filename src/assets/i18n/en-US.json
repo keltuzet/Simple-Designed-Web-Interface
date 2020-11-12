@@ -1,6 +1,9 @@
 {
   "COMMON": {
-    "PAGE": "Page"
+    "PAGE": "Page",
+    "REMOVED": "Removed",
+    "BLOCKED": "Blocked",
+    "ACTIVE": "Active"
   },
   "PAGES": {
     "HOME": {
@@ -14,6 +17,9 @@
     },
     "ANIMATIONS": {
       "TITLE": "Animations"
+    },
+    "WEATHER": {
+      "TITLE": "Weather"
     }
   },
   "NAV": {
@@ -25,6 +31,10 @@
     "REMOVE": "Remove",
     "UPDATE": "Update",
     "CANCEL": "Cancel"
+  },
+  "PLACEHOLDER": {
+    "DATE": "day/month/year",
+    "DATE_TIME": "day/month/year hour:minute"
   },
   "TITLES": {},
   "TABLE_HEADERS": {
@@ -41,5 +51,23 @@
     "LAST_TRANSACTION_DATE": "Last transaction date",
     "ACCOUNT": "Account",
     "STATUS": "Status"
+  },
+  "CALENDAR": {
+    "MONTHS": {
+      "SHORT": {
+        "JAN": "jan",
+        "FEB": "feb",
+        "MAR": "mar",
+        "APR": "apr",
+        "MAY": "may",
+        "JUN": "jun",
+        "JUL": "jul",
+        "AUG": "aug",
+        "SEP": "sep",
+        "OCT": "oct",
+        "NOV": "nov",
+        "DEC": "dec"
+      }
+    }
   }
 }

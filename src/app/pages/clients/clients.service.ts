@@ -15,7 +15,7 @@ export class ClientsService extends SpinnerService {
   }
 
   getClients(): Observable<ClientBaseModel[]> {
-    return this.skipSpinner(
+    return this.skipThroughSpinnerWrap(
       of(ClientsData as ClientBaseModel[]).pipe(
         delay(20000),
         map((clients) => clients.map((client) => new ClientBaseModel(client)))

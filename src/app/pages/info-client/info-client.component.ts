@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ClientBaseModel } from '@pages/clients/model/client-base.model';
+import { ClientBaseModel } from '@shared/models/client-base.model';
 import { ROUTE } from '@shared/const';
 import { ClientsDatabaseService } from '@shared/services';
 

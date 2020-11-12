@@ -3,12 +3,16 @@ app-form-field {
   @include flex-pos(column, wrap);
   margin-top: 0.5rem;
   position: relative;
-  padding: 1.5rem 0 1rem 0;
+  padding: 1.5rem 0 1.6rem 0;
   width: 100%;
   max-width: 25rem;
 
   &.no-label {
     padding-top: 0;
+
+    app-field-error-label {
+      top: 2.1rem;
+    }
   }
 
   &.no-error-label {
