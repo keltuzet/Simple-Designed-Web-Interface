@@ -8,7 +8,7 @@
   Simp  -> Simplified
 */
 
-import { HourlyWFModel } from './common.model';
+import { HourlyWFModel } from './weather-forecast-common.model';
 import { CWFSimpModel } from './current-weather-forecast.model';
 
 export interface HWFModel {

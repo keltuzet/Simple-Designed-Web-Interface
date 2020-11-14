@@ -5,6 +5,17 @@
   Temp  -> Temperature
 */
 
+export type WFUnitsType = 'standard' | 'metric' | 'imperial';
+
+/*
+  lon -> City geo location, longitude
+  lat -> City geo location, latitude
+*/
+export interface WFCoordinationModel {
+  lon: number;
+  lat: number;
+}
+
 /*
   timezone -> Shift in seconds from UTC
 */

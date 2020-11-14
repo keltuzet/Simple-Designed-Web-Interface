@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { InjectionToken, Injector } from '@angular/core';
-import { GetHttpOption } from '@shared/models';
+import { GetHttpOptions } from '@shared/models';
 import { Observable } from 'rxjs';
 import { SpinnerService } from '../spinner';
 
@@ -28,7 +28,7 @@ export class BaseHttpService extends SpinnerService {
 
   protected get<T>(
     urlPathname: string,
-    httpOptions: GetHttpOption = {}
+    httpOptions: GetHttpOptions = {}
   ): Observable<T> {
     const { id } = httpOptions;
     const requestUrl = `${this.apiUrl}/${urlPathname}${id ? `/${id}` : ''}`;

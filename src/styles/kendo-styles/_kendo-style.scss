@@ -9,12 +9,13 @@
 @import "./utilities/text";
 
 // custom components
+@import "./components/calendar";
+@import "./components/card";
+@import "./components/form-field";
 @import "./components/header";
 @import "./components/not-found";
 @import "./components/paginator";
-@import "./components/form-field";
 @import "./components/select";
-@import "./components/calendar";
 
 // foreign components
 @import "./foreign/loader";

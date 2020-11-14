@@ -22,7 +22,6 @@ import { HeaderModule } from '@shared/components';
 import { EN, EN_LABEL, LANG_STORE_KEY, RU, RU_LABEL } from '@shared/const';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { WeatherInterceptor } from '@pages/weather/http-interceptors/weather-interceptor';
 
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {

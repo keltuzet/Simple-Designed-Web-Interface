@@ -8,17 +8,17 @@
   Simp  -> Simplified
 */
 
-import { CoordinationModel } from './coordination.model';
 import {
   WFTimezoneExtendedModel,
   WFAlertModel,
   DailyWFModel,
   HourlyWFModel,
   MinutelyWFModel,
-} from './common.model';
+  WFCoordinationModel,
+} from './weather-forecast-common.model';
 import { CWFSimpModel } from './current-weather-forecast.model';
 
-export interface PWFModel extends CoordinationModel, WFTimezoneExtendedModel {
+export interface PWFModel extends WFCoordinationModel, WFTimezoneExtendedModel {
   timezone_offset: number;
   current: CWFSimpModel;
   minutely: MinutelyWFModel[];

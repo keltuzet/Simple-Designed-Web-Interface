@@ -1,0 +1,72 @@
+.card {
+  display: inline-flex;
+  flex-direction: column;
+
+  color: #656565;
+  background-color: #fff;
+  border: 1px solid $default-border-color;
+}
+
+.cwf-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+
+  .header {
+    margin-bottom: 1.5rem;
+
+    .header-title {
+      .date {
+        color: #ff6358;
+        font-size: 0.875em;
+      }
+
+      .location {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  .content {
+    font-size: 0.875em;
+
+    .content-main {
+      display: flex;
+      align-items: center;
+
+      .wf-base-info {
+        display: inline-flex;
+        align-items: center;
+        height: 4.25rem;
+        margin-right: 1rem;
+
+        .wf-icon {
+          height: 100%;
+        }
+
+        .wf-temp {
+          line-height: 1.5em;
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+      }
+
+      .wf-condition-info {
+        display: flex;
+        flex-direction: column;
+
+        .wf-description {
+          // color: #fff;
+        }
+      }
+    }
+
+    .wf-charects {
+      display: flex;
+      flex-wrap: wrap;
+
+      .wf-charect {
+        margin-right: 1rem;
+      }
+    }
+  }
+}

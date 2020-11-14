@@ -2,14 +2,15 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import { GetBaseHttpOptions } from '@shared/models';
 import { Observable } from 'rxjs';
-import { WeatherHttpService } from './http';
+import { WeatherHttpService } from '../http';
 import {
   CWFVisibilitySystemModel,
   RectangleZoneCWFModel,
   CircleZoneCWFModel,
   SeveralLocationsCWFModel,
   PWFModel,
-} from './models';
+  HWFModel,
+} from '../models';
 
 @Injectable()
 export class WeatherService extends WeatherHttpService {
@@ -126,7 +127,7 @@ export class WeatherService extends WeatherHttpService {
       fromObject: {
         lat: lat.toString(),
         lon: lon.toString(),
-      }
+      },
     });
     params.set('dadsa', '213');
     if (exclude?.length) {
@@ -139,7 +140,7 @@ export class WeatherService extends WeatherHttpService {
     lat: number,
     lon: number,
     dt: Date
-  ): Observable<any> {
+  ): Observable<HWFModel> {
     const httpOptions = {
       params: {
         lat: lat.toString(),

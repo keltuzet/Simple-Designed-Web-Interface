@@ -1,1 +1,53 @@
-<p>weather-card works!</p>
+<div *ngIf="forecast" class="card cwf-card">
+  <div class="header">
+    <div class="header-title">
+      <div class="date">
+        {{ date | localDate : 'long' }}
+      </div>
+      <h1 class="location">
+        {{ forecast.timezone.split('/').join(', ') }}
+      </h1>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content-main">
+      <div class="wf-base-info">
+        <span class="wf-temp">
+          {{ forecast.current.temp }}
+        </span>
+        <img class="wf-icon" [src]="getWeatherIcon(forecast.current.weather[0].icon)" alt="weather-icon">
+      </div>
+      <div class="wf-condition-info">
+        <span class="wf-description">{{ forecast.current.weather[0].main }}. {{ forecast.current.weather[0].description }}</span>
+        <span class="wf-feels-like">Feels like {{ forecast.current.feels_like }}</span>
+      </div>
+    </div>
+    <div class="wf-charects">
+      <div class="wf-charect">
+        <span class="wf-charect__value">
+          {{ forecast.current.wind_speed }}
+        </span>
+      </div>
+      <div class="wf-charect">
+        <span class="wf-charect__value">
+          {{ forecast.current.humidity }}
+        </span>
+      </div>
+      <div class="wf-charect">
+        <span class="wf-charect__value">
+          {{ forecast.current.pressure }}
+        </span>
+      </div>
+      <div class="wf-charect">
+        <span class="wf-charect__value">
+          {{ forecast.current.dew_point }}
+        </span>
+      </div>
+      <div class="wf-charect">
+        <span class="wf-charect__value">
+          {{ forecast.current.visibility }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

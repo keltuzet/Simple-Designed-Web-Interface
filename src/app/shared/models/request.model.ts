@@ -18,4 +18,4 @@ export interface GetBaseHttpOptions {
   withCredentials?: boolean;
 }
 
-export interface GetHttpOption extends GetBaseHttpOptions, StringableOptionalIdentification {}
+export interface GetHttpOptions extends GetBaseHttpOptions, StringableOptionalIdentification {}

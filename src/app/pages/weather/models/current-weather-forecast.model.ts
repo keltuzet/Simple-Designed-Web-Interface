@@ -25,8 +25,8 @@ import {
   WFRainParamModel,
   WFSunSystemInfoModel,
   WFWindModel,
-} from './common.model';
-import { CoordinationModel } from './coordination.model';
+  WFCoordinationModel,
+} from './weather-forecast-common.model';
 
 export interface CWFSimpModel
   extends WFDateModel,
@@ -37,6 +37,8 @@ export interface CWFSimpModel
     WFCloudModel,
     WFMiddayUVIndexModel,
     WFConditionInfoModel {
+  feels_like: number;
+  temp: number;
   rain?: WFRainParamModel;
   snow?: WFSnowParamModel;
 }
@@ -44,7 +46,7 @@ export interface CWFSimpModel
 export interface CWFBaseModel extends WFDateModel {
   id: number;
   name: string;
-  coord: CoordinationModel;
+  coord: WFCoordinationModel;
   weather: WFConditionInfoParamModel[];
   main?: WFAirParamModel;
   wind?: WFWindParamModel;
