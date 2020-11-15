@@ -19,7 +19,8 @@
       "TITLE": "Animations"
     },
     "WEATHER": {
-      "TITLE": "Weather"
+      "TITLE": "Weather",
+      "FEELS_LIKE": "Feels like"
     }
   },
   "NAV": {
@@ -68,6 +69,25 @@
         "NOV": "nov",
         "DEC": "dec"
       }
+    }
+  },
+  "UNITS": {
+    "common": {
+      "length": "metre",
+      "short_length": "mm",
+      "pressure": "hPa"
+    },
+    "metric": {
+      "speed": "metre/sec",
+      "temp": "°C"
+    },
+    "imperial": {
+      "speed": "miles/sec",
+      "temp": "°F"
+    },
+    "standard": {
+      "speed": "metre/sec",
+      "temp": "K"
     }
   }
 }

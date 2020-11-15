@@ -19,7 +19,8 @@
       "TITLE": "Анимации"
     },
     "WEATHER": {
-      "TITLE": "Погода"
+      "TITLE": "Погода",
+      "FEELS_LIKE": "Ощущается как"
     }
   },
   "NAV": {
@@ -68,6 +69,25 @@
         "NOV": "нояб",
         "DEC": "дек"
       }
+    }
+  },
+  "UNITS": {
+    "COMMON": {
+      "LENGTH": "метр",
+      "SHORT_LENGTH": "мм",
+      "PRESSURE": "гПа"
+    },
+    "METRIC": {
+      "SPEED": "метр/сек",
+      "temp": "°C"
+    },
+    "IMPERIAL": {
+      "SPEED": "миля/сек",
+      "temp": "°F"
+    },
+    "STANDARD": {
+      "SPEED": "метр/сек",
+      "temp": "K"
     }
   }
 }

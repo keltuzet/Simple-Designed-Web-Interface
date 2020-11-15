@@ -1,9 +1,11 @@
 import { HttpHeaders, HttpParams } from '@angular/common/http';
 import { StringableOptionalIdentification } from './common';
 
-export interface ParamsObjectModel {
+export interface HttpParamsObjectModel {
   [param: string]: string | string[];
 }
+
+type CommonHttpParams = HttpParams | HttpParamsObjectModel;
 
 export interface GetBaseHttpOptions {
   headers?:
@@ -12,7 +14,7 @@ export interface GetBaseHttpOptions {
         [header: string]: string | string[];
       };
   observe?: 'body';
-  params?: HttpParams | ParamsObjectModel;
+  params?: CommonHttpParams;
   reportProgress?: boolean;
   responseType?: 'json';
   withCredentials?: boolean;
