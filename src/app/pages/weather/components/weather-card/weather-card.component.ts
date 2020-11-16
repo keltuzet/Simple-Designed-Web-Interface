@@ -1,6 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PWFModel } from '@pages/weather/models';
 
+//pYklCKfGnaUoQkLceySO
+//vpn.dynamicsun.ru
+//Login: samatov@dynamicsun
+//Password: sdf$A9Ba0s
+
+
 export interface WeatherCharactModel {
   icon: any;
   charact: string;
