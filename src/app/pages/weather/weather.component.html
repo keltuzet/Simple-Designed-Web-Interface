@@ -2,3 +2,7 @@
   <app-weather-card [forecast]="forecast"></app-weather-card>
 </div>
 
+<div [innerHTML]="11 | unit: 'temp':'imperial'"></div>
+<div>
+  <span>{{11 | unit: 'temp':'imperial'}}</span>
+</div>

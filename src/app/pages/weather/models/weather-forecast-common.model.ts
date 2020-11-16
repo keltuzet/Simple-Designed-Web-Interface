@@ -6,6 +6,7 @@
 */
 
 export type WFUnitsType = 'standard' | 'metric' | 'imperial';
+export type LocalWFUnitsType = WFUnitsType | 'common';
 
 /*
   lon -> City geo location, longitude
